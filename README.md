@@ -16,13 +16,13 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 
 ## Datos actuales
 
-- **Nombres:** Gaby y Salvador, tomados del nombre del proyecto.
+- **Nombres:** Salvador y Gabriela, tomados del nombre del proyecto.
 - **Celebración:** 28 de noviembre de **2026**. El año se asumió por ser la próxima fecha; puede cambiarse.
-- **Hora:** 17:00, propuesta editable, en `America/Mexico_City`.
+- **Horario:** ceremonia a la 1:00 p. m. y recepción a las 5:00 p. m., en hora local de Oklahoma City (`America/Chicago`).
 - **Límite de confirmación:** 14 de noviembre de 2026, fecha sugerida editable.
-- **Iglesia y recepción:** pendientes. Los botones explican que las direcciones se compartirán pronto. Al configurar una URL válida abren Google Maps directamente.
+- **Ceremonia:** Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064. **Recepción:** La Joya Event Center, 3830 N MacArthur Blvd, Warr Acres, OK 73122. Cada botón de Maps usa la dirección proporcionada.
 - **WhatsApp:** pendiente. No se utiliza ningún teléfono ficticio. El formulario prepara y copia el mensaje; no registra ni confirma asistencias. Al configurar un teléfono, el botón abre WhatsApp con ese mensaje.
-- **Itinerario y código de vestimenta:** propuesta editable.
+- **Itinerario:** comida de 6:00 a 8:00 p. m.; baile de 9:00 p. m. a 1:00 a. m. del domingo 29 de noviembre. El calendario abarca desde la ceremonia hasta el cierre del baile.
 - **Mesa de regalos:** Amazon y Target, con enlaces pendientes. Cada botón muestra un aviso de próxima disponibilidad hasta añadir su lista real.
 
 ## Personalizar desde `js/config.js`
@@ -34,19 +34,41 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 | `event.title` | Título de la invitación |
 | `event.date` | Fecha `AAAA-MM-DD` |
 | `event.time` | Inicio, `HH:MM` en formato de 24 horas |
-| `event.timeZone` | Zona IANA; por defecto `America/Mexico_City` |
+| `event.timeZone` | Zona IANA; `America/Chicago` para Oklahoma City |
 | `event.dateTimeISO` | Opcional: fecha con desplazamiento UTC explícito |
 | `event.durationHours` | Duración para el calendario |
 | `event.location`, `event.scheduleNote` | Lugar general y nota sobre los horarios |
 | `ceremony`, `reception` | Nombre, dirección, horario y URL de cada ubicación |
-| `itinerary` | Horas, títulos, descripciones e iconos de los momentos |
-| `dressCode`, `dressNote` | Vestimenta y nota opcional |
+| `itinerary` | Horas de inicio, `endTime` opcional, `endDayOffset: 1` para terminar al día siguiente, títulos, descripciones e iconos |
+| `dressCode`, `dressColors`, `dressPalette`, `dressNote` | Vestimenta, título de colores, muestras circulares (`name` y `color` hexadecimal) y nota opcional |
 | `gifts.amazon.url`, `gifts.target.url` | Enlace de compartir de cada lista de regalos |
 | `gifts.title`, `gifts.message`, `gifts.pendingMessage` | Título, mensaje y aviso de listas pendientes |
 | `rsvp.phone` | WhatsApp internacional, solo dígitos |
 | `rsvp.deadline` | Fecha límite para confirmar |
 | `rsvp.message` | Plantilla editable del mensaje |
 | `text` | Frases de la portada, historia, cierre y otras secciones |
+| `gallery.photos`, `gallery.title`, `gallery.message`, `gallery.pendingMessage` | Fotografías, título y mensajes de la galería |
+
+### Fotografías
+
+La sección **25 años de recuerdos** aparece después de Nuestra historia y antes de la fecha. Mientras `gallery.photos` esté vacío, muestra cuatro marcos decorativos y un aviso de próxima disponibilidad; no carga imágenes de ejemplo ni presenta fotos ficticias.
+
+Cuando tengas las fotografías:
+
+1. Copia los archivos a `assets/images/` (se recomiendan JPG o WebP optimizados).
+2. Agrega sus rutas y descripciones a `gallery.photos` en `js/config.js`:
+
+```js
+photos: [
+  { src: "assets/images/boda.jpg", alt: "Descripción de la fotografía de nuestra boda", caption: "El comienzo" },
+  { src: "assets/images/aniversario.jpg", alt: "Descripción de la fotografía de nuestro aniversario", caption: "Hoy y siempre" }
+]
+```
+
+Los nombres anteriores son ejemplos: los archivos deben existir antes de añadirlos. La galería reemplaza los marcos vacíos automáticamente al configurar imágenes válidas. Admite fotos locales dentro de `assets/images/` y URLs HTTPS sin credenciales. Si una foto no carga, muestra un aviso en su marco en lugar del icono de imagen rota. Las fotos se cargan al acercarse a la sección y las descripciones no se insertan como HTML.
+
+Puedes cambiar el título, la frase y el aviso pendiente en `gallery.title`, `gallery.message` y `gallery.pendingMessage`. La sección muestra las imágenes sin abrir ventanas adicionales ni simular una carga de archivos. Después de añadirlas, vuelve a publicar la invitación.
+
 
 ### Mesa de regalos de Amazon y Target
 
@@ -64,9 +86,9 @@ Si necesitas indicar el desplazamiento manualmente:
 
 ```js
 date: "2026-11-28",
-time: "17:00",
-timeZone: "America/Mexico_City",
-dateTimeISO: "2026-11-28T17:00:00-06:00"
+time: "13:00",
+timeZone: "America/Chicago",
+dateTimeISO: "2026-11-28T13:00:00-06:00"
 ```
 
 **Cuando `dateTimeISO` tiene un valor, tiene prioridad** sobre `date` y `time`, también para la fecha visible. Déjalo vacío si prefieres cambiar únicamente fecha y hora. El archivo de calendario usa UTC para que cada aplicación lo convierta a la zona del invitado. Las fechas inválidas se presentan como pendientes; una hora local inexistente por cambio de horario necesita un desplazamiento explícito. En zonas con horas duplicadas también conviene usar el desplazamiento explícito.
@@ -106,7 +128,7 @@ Mientras no haya teléfono válido, el botón copia el mensaje y explica que la 
 
 Iconos disponibles para `itinerary`: `church`, `sparkles`, `utensils`, `glasses`, `music`, `heart`. Un nombre desconocido muestra un corazón.
 
-Colores y tipografías están en las variables de `css/styles.css`. Las ilustraciones están en `assets/images/olive-branch.svg`; el favicon en `assets/icons/favicon.svg`. No se cargan bibliotecas de iconos ni imágenes externas. Se respeta `prefers-reduced-motion` y se admite navegación por teclado, cierre de diálogos con Escape y retorno al elemento que los abrió.
+Colores y tipografías están en las variables de `css/styles.css`. Las ilustraciones están en `assets/images/`: `olive-branch.svg` para las ramas, `olive-corner.svg` para las esquinas y `olive-divider.svg` para los separadores; el favicon está en `assets/icons/favicon.svg`. Los iconos usan un trazo reforzado en olivo y las tarjetas tienen marcos dorados dobles. No se cargan bibliotecas de iconos ni imágenes externas. Se respeta `prefers-reduced-motion` y se admite navegación por teclado, cierre de diálogos con Escape y retorno al elemento que los abrió.
 
 El título, descripción y metadatos sociales se actualizan desde la configuración al cargar. Antes de compartir en WhatsApp, actualiza también las etiquetas estáticas de `<head>` en `index.html` si cambias nombres o fecha: los rastreadores de enlaces normalmente no ejecutan JavaScript. La opción de compartir necesita un enlace HTTP/HTTPS; desde un archivo local se explica que primero debe publicarse.
 
@@ -129,6 +151,8 @@ css/styles.css
 js/config.js
 js/main.js
 assets/images/olive-branch.svg
+assets/images/olive-corner.svg
+assets/images/olive-divider.svg
 assets/icons/favicon.svg
 scripts/serve.mjs
 scripts/build.mjs

@@ -8,7 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:title" content="Gaby & Salvador · Bodas de Plata">
-  <meta property="og:description" content="25 años de amor. Una historia que queremos celebrar contigo. 28 de noviembre de 2026.">
+  <meta property="og:description" content="28 de noviembre de 2026 · Oklahoma City. Ceremonia a la 1:00 p. m. y recepción a las 5:00 p. m.">
   <title>Gaby & Salvador · Bodas de Plata</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +40,7 @@
       <symbol id="i-dress" viewBox="0 0 48 64"><path d="m17 5 7 5 7-5 3 12-5 8 12 32H7l12-32-5-8 3-12Zm2 20h10M17 5V1m14 4V1"/></symbol>
       <symbol id="i-suit" viewBox="0 0 48 64"><path d="m15 5 9 5 9-5 9 8-4 43H10L6 13l9-8Zm0 0 9 30 9-30M24 35v21M11 10l5 9-4 4 12 12m13-25-5 9 4 4-12 12m-4-22 4 4 4-4m-4 4-3 9 3 5 3-5-3-9"/></symbol>
       <symbol id="i-gift" viewBox="0 0 40 40"><path d="M6 19v16h28V19M3 12h34v7H3zM20 12v23M20 12H12a4.5 4.5 0 1 1 4.5-4.5L20 12Zm0 0h8a4.5 4.5 0 1 0-4.5-4.5L20 12Z"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 40 40"><path d="M5 12h7l3-5h10l3 5h7a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3Z"/><circle cx="20" cy="23" r="7"/><path d="M31 17h1"/></symbol>
     </defs>
   </svg>
 
@@ -47,6 +48,7 @@
     <a class="brand" href="#inicio" aria-label="Gaby y Salvador, inicio"><span data-bind="couple.initials">G & S</span><span class="brand-caption">BODAS DE PLATA</span></a>
     <nav aria-label="Navegación principal">
       <a href="#historia">Nuestra historia</a>
+      <a href="#recuerdos">Fotos</a>
       <a href="#celebracion">La celebración</a>
       <a href="#itinerario">Itinerario</a>
       <a href="#regalos">Mesa de regalos</a>
@@ -83,6 +85,21 @@
       <h2 class="reveal text-lines" id="story-title" data-bind="text.storyTitle">Un sí. Miles de recuerdos.<br>Toda una vida juntos.</h2>
       <p class="story-message reveal" data-bind="text.storyMessage">Veinticinco años de momentos compartidos, sueños cumplidos y un amor que ha crecido con el tiempo. Hoy queremos celebrar esta hermosa historia rodeados de las personas que forman parte de nuestras vidas.</p>
       <p class="story-signature reveal">Y volveríamos a elegirnos.</p>
+      <img class="botanical-divider reveal" src="assets/images/olive-divider.svg" alt="" width="240" height="48" loading="lazy">
+    </section>
+
+    <section class="gallery-section section-wrap" id="recuerdos" aria-labelledby="gallery-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-bind="gallery.eyebrow">Instantes que se quedan</p>
+        <h2 id="gallery-title" data-bind="gallery.title">25 años de recuerdos</h2>
+        <p class="gallery-message" id="gallery-message" data-bind="gallery.pendingMessage">Muy pronto compartiremos aquí algunas de nuestras fotografías.</p>
+      </div>
+      <div class="gallery-grid reveal" id="gallery-grid" aria-hidden="true">
+        <div class="photo-card"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-camera"/></svg></span></div></div>
+        <div class="photo-card"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-rings"/></svg></span></div></div>
+        <div class="photo-card"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-heart"/></svg></span></div></div>
+        <div class="photo-card"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-camera"/></svg></span></div></div>
+      </div>
     </section>
 
     <section class="date-section" aria-labelledby="date-title">
@@ -107,15 +124,15 @@
     </section>
 
     <section class="places section-wrap section-space" id="celebracion" aria-labelledby="places-title">
-      <div class="section-heading reveal"><p class="eyebrow">El día que queremos compartir</p><h2 id="places-title" data-bind="text.placesTitle">Dos momentos. Una celebración.</h2><p data-bind="event.scheduleNote">Horarios propuestos · ubicaciones por confirmar</p></div>
+      <div class="section-heading reveal"><p class="eyebrow">El día que queremos compartir</p><h2 id="places-title" data-bind="text.placesTitle">Dos momentos. Una celebración.</h2><p data-bind="event.scheduleNote">Oklahoma City · Todos los horarios son en hora local</p></div>
       <div class="venue-grid">
         <article class="venue-card reveal">
           <span class="card-number" aria-hidden="true">01</span>
           <svg class="venue-icon icon" aria-hidden="true"><use href="#i-church"/></svg>
           <p class="eyebrow">Ceremonia religiosa</p>
-          <h3 data-bind="ceremony.name">Un sí, una vez más</h3>
-          <p class="venue-address" data-bind="ceremony.address">Muy pronto compartiremos contigo la iglesia y su dirección.</p>
-          <time class="venue-time" data-time="ceremony">17:00 <span>HRS.</span></time>
+          <h3 data-bind="ceremony.name">Holy Spirit Catholic Church</h3>
+          <p class="venue-address" data-bind="ceremony.address">1212 N Sara Rd, Mustang, OK 73064</p>
+          <time class="venue-time" data-time="ceremony" datetime="13:00">1:00 <span>p. m.</span></time>
           <a class="button button-outline" id="ceremony-map" href="#ubicacion"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Ver ubicación <svg class="icon small" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <img class="card-branch" src="assets/images/olive-branch.svg" width="420" height="680" loading="lazy" alt="">
         </article>
@@ -123,9 +140,9 @@
           <span class="card-number" aria-hidden="true">02</span>
           <svg class="venue-icon icon" aria-hidden="true"><use href="#i-glasses"/></svg>
           <p class="eyebrow">Recepción</p>
-          <h3 data-bind="reception.name">Una noche para recordar</h3>
-          <p class="venue-address" data-bind="reception.address">Muy pronto compartiremos contigo el lugar de nuestra celebración.</p>
-          <time class="venue-time" data-time="reception">18:30 <span>HRS.</span></time>
+          <h3 data-bind="reception.name">La Joya Event Center</h3>
+          <p class="venue-address" data-bind="reception.address">3830 N MacArthur Blvd, Warr Acres, OK 73122</p>
+          <time class="venue-time" data-time="reception" datetime="17:00">5:00 <span>p. m.</span></time>
           <a class="button button-outline" id="reception-map" href="#ubicacion"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Cómo llegar <svg class="icon small" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <img class="card-branch" src="assets/images/olive-branch.svg" width="420" height="680" loading="lazy" alt="">
         </article>
@@ -138,15 +155,27 @@
     </section>
 
     <section class="dress-section" aria-labelledby="dress-title">
-      <div class="dress-content section-wrap reveal"><div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#i-suit"/></svg><svg class="icon"><use href="#i-dress"/></svg></div><div><p class="eyebrow" id="dress-title">Código de vestimenta</p><h2 data-bind="dressCode">Formal elegante</h2></div><p data-bind="dressNote">Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.</p></div>
+      <div class="dress-content section-wrap reveal">
+        <div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#i-suit"/></svg><svg class="icon"><use href="#i-dress"/></svg></div>
+        <div class="dress-details">
+          <p class="eyebrow" id="dress-title">Código de vestimenta</p>
+          <h2 data-bind="dressCode">Formal elegante</h2>
+          <p class="dress-colors" id="dress-palette-label" data-bind="dressColors">Colores de preferencia</p>
+          <ul class="dress-palette" id="dress-palette" role="list" aria-labelledby="dress-palette-label">
+            <li><span class="dress-swatch swatch-brown" aria-hidden="true"></span><span>Café</span></li>
+            <li><span class="dress-swatch swatch-beige" aria-hidden="true"></span><span>Beige</span></li>
+            <li><span class="dress-swatch swatch-olive" aria-hidden="true"></span><span>Verde olivo</span></li>
+          </ul>
+        </div>
+        <p data-bind="dressNote">Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.</p>
+      </div>
     </section>
 
     <section class="gifts-section section-wrap section-space" id="regalos" aria-labelledby="gifts-title">
       <div class="section-heading reveal">
         <svg class="gift-heading-icon icon" aria-hidden="true"><use href="#i-gift"/></svg>
-        <p class="eyebrow">Detalles llenos de cariño</p>
         <h2 id="gifts-title" data-bind="gifts.title">Mesa de regalos</h2>
-        <p class="gifts-message" data-bind="gifts.message">Celebrar contigo es lo más importante. Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas de regalos.</p>
+        <p class="gifts-message" data-bind="gifts.message">Si deseas obsequiarnos un detalle, aquí podrás consultar nuestras listas.</p>
       </div>
       <div class="gift-grid">
         <article class="gift-card reveal" aria-labelledby="amazon-title">
@@ -166,15 +195,15 @@
 
     <section class="rsvp-section" id="asistencia" aria-labelledby="rsvp-title">
       <img class="rsvp-branch" src="assets/images/olive-branch.svg" alt="" width="420" height="680" loading="lazy">
-      <div class="rsvp-content section-wrap reveal"><p class="eyebrow">El detalle más especial es tu presencia</p><h2 class="text-lines" id="rsvp-title" data-bind="text.rsvpTitle">Nos hará muy felices<br>contar contigo.</h2><p data-bind="text.rsvpMessage">Gracias por ser parte de nuestra historia. Acompáñanos a escribir un nuevo recuerdo.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="rsvp-deadline">Confirma antes del <time data-date="deadline" datetime="2026-11-14">14 de noviembre de 2026</time></p><p class="rsvp-pending" id="rsvp-pending">WhatsApp estará disponible próximamente.</p></div>
+      <div class="rsvp-content section-wrap reveal"><p class="eyebrow">Confirma tu asistencia</p><h2 class="text-lines" id="rsvp-title" data-bind="text.rsvpTitle">¿Nos acompañas?</h2><p data-bind="text.rsvpMessage">Indícanos tu nombre y cuántas personas asistirán para ayudarnos a preparar la recepción.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="rsvp-deadline">Confirma antes del <time data-date="deadline" datetime="2026-11-14">14 de noviembre de 2026</time></p><p class="rsvp-pending" id="rsvp-pending">WhatsApp estará disponible próximamente.</p></div>
     </section>
 
     <footer class="closing section-wrap">
       <div class="monogram" data-bind="couple.initials" aria-hidden="true">G & S</div>
-      <p class="closing-quote text-lines" data-bind="text.closingQuote">El mejor regalo es compartir<br>este momento contigo.</p>
+      <p class="closing-quote text-lines" data-bind="text.closingQuote">Que sigan los años,<br>que nunca falte el amor.</p>
       <p class="couple-script" data-couple>Gaby <span>&</span> Salvador</p>
       <time class="closing-date" data-date="hero" datetime="2026-11-28">28 · NOVIEMBRE · 2026</time>
-      <div class="footer-bottom"><p data-bind="text.closingThanks">Con todo nuestro cariño, hoy y siempre.</p><a href="#inicio">Volver al inicio <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a></div>
+      <div class="footer-bottom"><p data-bind="text.closingThanks">Con amor, siempre.</p><a href="#inicio">Volver al inicio <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a></div>
     </footer>
   </main>
 
@@ -184,7 +213,7 @@
   <dialog class="invitation-dialog" id="rsvp-dialog" aria-labelledby="dialog-title">
     <button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     <div class="dialog-ornament" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></div>
-    <p class="eyebrow">Un lugar en nuestra celebración</p><h2 id="dialog-title">¡Nos encantará verte!</h2>
+    <p class="eyebrow">Tu respuesta</p><h2 id="dialog-title">Prepara tu confirmación</h2>
     <p class="dialog-note" id="rsvp-mode-note"></p>
     <form id="rsvp-form">
       <label for="guest-name">Tu nombre</label><input id="guest-name" name="guestName" autocomplete="name" maxlength="100" required placeholder="¿Cómo te llamas?">
@@ -198,6 +227,6 @@
   <dialog class="invitation-dialog info-dialog" id="gift-dialog" aria-labelledby="gift-dialog-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><div class="dialog-ornament" aria-hidden="true"><svg class="icon"><use href="#i-gift"/></svg></div><p class="eyebrow">Gracias por tu cariño</p><h2 id="gift-dialog-title">Nuestra lista de regalos</h2><p id="gift-dialog-message"></p><button class="button button-olive" type="button" data-close>Entendido <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button></dialog>
   <dialog class="invitation-dialog info-dialog" id="info-dialog" aria-labelledby="info-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><div class="dialog-ornament" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></div><p class="eyebrow">Estamos preparando cada detalle</p><h2 id="info-title">Muy pronto, la ubicación</h2><p id="info-message"></p><button class="button button-olive" type="button" data-close>Entendido <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button></dialog>
   <dialog class="invitation-dialog" id="share-dialog" aria-labelledby="share-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><p class="eyebrow">Comparte este día especial</p><h2 id="share-title">El amor se comparte.</h2><p>Envía la invitación a quienes celebrarán con nosotros.</p><label for="share-url">Enlace de la invitación</label><input id="share-url" readonly><button class="button button-olive" type="button" id="copy-link"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copiar enlace</button><a class="text-button" id="share-whatsapp" target="_blank" rel="noopener noreferrer">Compartir por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p id="share-status" role="status"></p></dialog>
-  <noscript><p class="noscript-note">Para ver la cuenta regresiva y preparar tu confirmación, activa JavaScript. Celebra con Gaby y Salvador el 28 de noviembre de 2026. Las ubicaciones se anunciarán próximamente.</p></noscript>
+  <noscript><p class="noscript-note">Para ver la cuenta regresiva y preparar tu confirmación, activa JavaScript. Celebra con Gaby y Salvador el 28 de noviembre de 2026. Ceremonia a la 1:00 p. m. en Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064. Recepción a las 5:00 p. m. en La Joya Event Center, 3830 N MacArthur Blvd, Warr Acres, OK 73122. Horarios de Oklahoma City.</p></noscript>
 </body>
 </html>

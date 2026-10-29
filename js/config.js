@@ -1,61 +1,77 @@
 /* Todos los datos de la invitación se personalizan aquí.
-   Los horarios son una propuesta; las ubicaciones y WhatsApp están pendientes. */
+   Lugares y horarios confirmados para el 28 de noviembre de 2026. */
 const invitationConfig = {
   couple: {
-    name1: "Gaby",
-    name2: "Salvador",
-    initials: "G & S",
+    name1: "Salvador",
+    name2: "Gabriela",
+    initials: "S & G",
     anniversaryYears: 25
   },
   event: {
     title: "Nuestras Bodas de Plata",
     date: "2026-11-28",
-    time: "17:00",
-    timeZone: "America/Mexico_City",
-    // Opcional. Déjalo vacío para calcular la fecha con date, time y timeZone.
-    // Ejemplo de instante explícito: "2026-11-28T17:00:00-06:00".
+    time: "13:00",
+    // Oklahoma City usa la zona IANA America/Chicago (hora central).
+    timeZone: "America/Chicago",
+    // Opcional: un instante explícito tiene prioridad sobre date y time.
+    // Ejemplo: "2026-11-28T13:00:00-06:00".
     dateTimeISO: "",
-    durationHours: 7,
-    location: "Ubicaciones por confirmar",
-    scheduleNote: "Horarios propuestos · ubicaciones por confirmar"
+    // De la ceremonia a la 1:00 p. m. al cierre a la 1:00 a. m. del día siguiente.
+    durationHours: 12,
+    location: "Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064",
+    scheduleNote: "Oklahoma City · Todos los horarios son en hora local"
   },
   ceremony: {
-    name: "Un sí, una vez más",
-    address: "Muy pronto compartiremos contigo la iglesia y su dirección.",
-    time: "17:00",
-    mapsUrl: ""
+    name: "Holy Spirit Catholic Church",
+    address: "1212 N Sara Rd, Mustang, OK 73064",
+    time: "13:00",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Holy%20Spirit%20Catholic%20Church%2C%201212%20N%20Sara%20Rd%2C%20Mustang%2C%20OK%2073064"
   },
   reception: {
-    name: "Una noche para recordar",
-    address: "Muy pronto compartiremos contigo el lugar de nuestra celebración.",
-    time: "18:30",
-    mapsUrl: ""
+    name: "La Joya Event Center",
+    address: "3830 N MacArthur Blvd, Warr Acres, OK 73122",
+    time: "17:00",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=La%20Joya%20Event%20Center%2C%203830%20N%20MacArthur%20Blvd%2C%20Warr%20Acres%2C%20OK%2073122"
   },
   itinerary: [
-    { time: "17:00", title: "Ceremonia religiosa", description: "Renovamos nuestra promesa de amor.", icon: "church" },
-    { time: "18:30", title: "Recepción y bienvenida", description: "El comienzo de una noche muy especial.", icon: "sparkles" },
-    { time: "19:00", title: "La cena", description: "Compartimos la mesa y los buenos momentos.", icon: "utensils" },
-    { time: "20:00", title: "Brindis por el amor", description: "Por lo vivido y por todo lo que viene.", icon: "glasses" },
-    { time: "21:00", title: "¡A bailar!", description: "Que la música nos regale más recuerdos.", icon: "music" }
+    { time: "13:00", title: "Ceremonia religiosa", description: "Holy Spirit Catholic Church · Mustang, Oklahoma.", icon: "church" },
+    { time: "17:00", title: "Recepción", description: "La Joya Event Center · Warr Acres, Oklahoma.", icon: "sparkles" },
+    { time: "18:00", endTime: "20:00", title: "Comida", icon: "utensils" },
+    { time: "21:00", endTime: "01:00", endDayOffset: 1, title: "Baile", icon: "music" }
   ],
+  gallery: {
+    eyebrow: "Instantes que se quedan",
+    title: "25 años de recuerdos",
+    message: "Pequeños instantes de una gran historia.",
+    pendingMessage: "Muy pronto compartiremos aquí algunas de nuestras fotografías.",
+    // Cuando tengas las fotos, cópialas a assets/images/ y agrega sus datos.
+    // Ejemplo: { src: "assets/images/boda.jpg", alt: "Nuestra boda", caption: "El comienzo" }
+    photos: []
+  },
   dressCode: "Formal elegante",
-  dressNote: "Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.",
+  dressColors: "Colores de preferencia",
+  dressPalette: [
+    { name: "Café", color: "#795B44" },
+    { name: "Beige", color: "#D8C5AA" },
+    { name: "Verde olivo", color: "#6B7654" }
+  ],
+  dressNote: "Elige un atuendo que te haga sentir especial y con el que disfrutes cada momento de esta celebración. Solo te pedimos amablemente evitar las lentejuelas.",
   gifts: {
     title: "Mesa de regalos",
-    message: "Celebrar contigo es lo más importante. Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas de regalos.",
-    pendingMessage: "Estamos preparando nuestra lista de regalos en {store}. Muy pronto podrás consultarla aquí. ¡Gracias por tu cariño!",
+    message: "Tu compañía es el regalo más valioso para nosotros. Sin embargo, si deseas tener un detalle especial, hemos preparado nuestras listas de regalos, que podrás consultar a continuación.",
+    pendingMessage: "Nuestra lista en {store} estará disponible próximamente.",
     // Pega el enlace de compartir de cada lista cuando esté lista.
     // Vacío muestra un aviso de próxima disponibilidad, sin inventar una lista.
-    amazon: { name: "Amazon", url: "" },
-    target: { name: "Target", url: "" }
+    amazon: { name: "Amazon", url: "https://www.amazon.com/wedding/guest-view/348FLMAW3FRI6" },
+    target: { name: "Target", url: "https://www.target.com/gift-registry/gift/Salvador-Gaby-C" }
   },
   rsvp: {
     // Escribe el número internacional, solo dígitos. Para México: 52 + 10 dígitos.
     // No uses un número ficticio. Vacío permite preparar y copiar el mensaje.
     phone: "",
     deadline: "2026-11-14",
-    message: "¡Hola, {couple}! Soy {name}. Me encantará acompañarlos el {date} en sus Bodas de Plata. Confirmo la asistencia de {guests}. ¡Gracias por hacernos parte de su historia!",
-    pendingNote: "Pronto estará disponible nuestro WhatsApp para confirmar. Por ahora, puedes preparar y copiar tu mensaje."
+    message: "¡Hola, {couple}! Soy {name}. Confirmo la asistencia de {guests} a sus Bodas de Plata el {date}.",
+    pendingNote: "WhatsApp estará disponible próximamente. Puedes preparar y copiar tu mensaje."
   },
   text: {
     eyebrow: "Celebrando 25 años de amor",
@@ -69,10 +85,10 @@ const invitationConfig = {
     placesTitle: "Dos momentos. Una celebración.",
     itineraryTitle: "Una noche,\nmuchos recuerdos.",
     itineraryIntro: "Cada momento será más especial si lo compartimos contigo.",
-    rsvpTitle: "Nos hará muy felices\ncontar contigo.",
-    rsvpMessage: "Gracias por ser parte de nuestra historia. Acompáñanos a escribir un nuevo recuerdo.",
-    closingQuote: "El mejor regalo es compartir\neste momento contigo.",
-    closingThanks: "Con todo nuestro cariño, hoy y siempre.",
+    rsvpTitle: "¿Nos acompañas?",
+    rsvpMessage: "Indícanos tu nombre y cuántas personas asistirán para ayudarnos a preparar la recepción.",
+    closingQuote: "Que sigan los años,\nque nunca falte el amor.",
+    closingThanks: "Con amor, siempre.",
     shareTitle: "Gaby & Salvador · Bodas de Plata",
     shareMessage: "Celebramos 25 años de amor. Nos encantará compartir este día contigo."
   }

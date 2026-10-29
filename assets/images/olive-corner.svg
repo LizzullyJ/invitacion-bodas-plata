@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" fill="none">
+  <path d="M12 63V12h51M19 48V19h29" stroke="#C3A46B" stroke-width=".9" opacity=".85"/>
+  <path d="M23 158C32 111 66 66 151 25" stroke="#9C8E69" stroke-width="1.15"/>
+  <path d="M32 129C31 115 22 101 17 98c-3 16 1 27 15 31Z" fill="#89927A" opacity=".7"/>
+  <path d="M41 109c2-15 13-29 23-33-1 15-8 27-23 33Z" fill="#A4AC92" opacity=".8"/>
+  <path d="M56 91c-1-19-12-36-20-41-3 20 3 34 20 41Z" fill="#89927A" opacity=".74"/>
+  <path d="M73 74c7-15 22-24 35-25-6 14-17 24-35 25Z" fill="#A4AC92" opacity=".78"/>
+  <path d="M93 58c3-17-1-34-8-43-8 17-7 32 8 43Z" fill="#89927A" opacity=".7"/>
+  <path d="M116 43c10-13 26-19 39-17-10 12-23 18-39 17Z" fill="#A4AC92" opacity=".88"/>
+  <path d="M31 139c17-10 35-10 45-5-16 11-31 13-45 5Zm36-55c-12-7-20-18-22-31 13 8 19 18 22 31Z" stroke="#C3A46B" stroke-width=".85"/>
+  <path d="M24 158c25-11 47-15 66-12" stroke="#C3A46B" stroke-width=".85"/>
+  <circle cx="152" cy="24" r="2.5" fill="#C3A46B"/>
+  <circle cx="19" cy="163" r="1.5" fill="#C3A46B" opacity=".7"/>
+</svg>
