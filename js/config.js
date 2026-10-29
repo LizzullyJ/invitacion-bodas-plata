@@ -16,10 +16,10 @@ const invitationConfig = {
     // Opcional: un instante explícito tiene prioridad sobre date y time.
     // Ejemplo: "2026-11-28T13:00:00-06:00".
     dateTimeISO: "",
-    // De la ceremonia a la 1:00 p. m. al cierre a la 1:00 a. m. del día siguiente.
+    // De la ceremonia a la 1:00 p. m. al cierre a la 1:00 a. m.
     durationHours: 12,
     location: "Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064",
-    scheduleNote: "Oklahoma City · Todos los horarios son en hora local"
+    scheduleNote: ""
   },
   ceremony: {
     name: "Holy Spirit Catholic Church",

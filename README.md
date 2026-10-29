@@ -22,7 +22,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 - **Límite de confirmación:** 14 de noviembre de 2026, fecha sugerida editable.
 - **Ceremonia:** Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064. **Recepción:** La Joya Event Center, 3830 N MacArthur Blvd, Warr Acres, OK 73122. Cada botón de Maps usa la dirección proporcionada.
 - **WhatsApp:** pendiente. No se utiliza ningún teléfono ficticio. El formulario prepara y copia el mensaje; no registra ni confirma asistencias. Al configurar un teléfono, el botón abre WhatsApp con ese mensaje.
-- **Itinerario:** comida de 6:00 a 8:00 p. m.; baile de 9:00 p. m. a 1:00 a. m. del domingo 29 de noviembre. El calendario abarca desde la ceremonia hasta el cierre del baile.
+- **Itinerario:** comida de 6:00 a 8:00 p. m.; baile de 9:00 p. m. a 1:00 a. m. El calendario abarca desde la ceremonia hasta el cierre del baile.
 - **Mesa de regalos:** Amazon y Target, con enlaces pendientes. Cada botón muestra un aviso de próxima disponibilidad hasta añadir su lista real.
 
 ## Personalizar desde `js/config.js`
