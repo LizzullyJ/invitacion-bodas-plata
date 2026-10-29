@@ -129,49 +129,35 @@
         <div class="hero-date entrance"><span></span><time data-date="hero" datetime="2026-11-28">28 · NOVIEMBRE ·
             2026</time><span></span></div>
         <p class="hero-quote entrance" data-bind="text.heroQuote">Después de 25 años, seguimos eligiéndonos.</p>
-        <a class="button button-olive entrance" href="#celebracion">Celebra con nosotros <svg class="icon"
-            aria-hidden="true">
-            <use href="#i-arrow" />
-          </svg></a>
       </div>
-      <div class="hero-art entrance" aria-label="25 años de amor">
-        <div class="arch-frame">
-          <div class="arch-inner"></div>
+      <div class="hero-art anniversary-keepsake entrance" aria-label="25 años juntos">
+        <div class="arch-frame" aria-hidden="true"><div class="arch-inner"></div></div>
+        <div class="anniversary-composition">
+          <svg class="rings" aria-hidden="true"><use href="#i-rings"/></svg>
+          <div class="anniversary-number" data-bind="couple.anniversaryYears">25</div>
+          <div class="anniversary-label">AÑOS<span>juntos</span></div>
+          <div class="anniversary-years" data-years>2001 — 2026</div>
         </div>
-        <svg class="rings" aria-hidden="true">
-          <use href="#i-rings" />
-        </svg>
-        <div class="anniversary-number" data-bind="couple.anniversaryYears">25</div>
-        <div class="anniversary-label">AÑOS DE<br><span>elegirnos</span></div>
-        <div class="anniversary-years" data-years>2001 — 2026</div>
-        <img class="hero-branch branch-right" src="assets/images/olive-branch.svg" alt="" width="420" height="680"
-          fetchpriority="high">
+        <img class="hero-branch branch-right" src="assets/images/olive-branch.svg" alt="" width="420" height="680" fetchpriority="high">
         <img class="hero-branch branch-left" src="assets/images/olive-branch.svg" alt="" width="420" height="680">
 
       </div>
     </section>
 
-    <section class="story section-wrap section-space" id="historia" aria-labelledby="story-title">
-      <div class="ornament" aria-hidden="true"><span></span><svg class="icon">
-          <use href="#i-heart" />
-        </svg><span></span></div>
-      <p class="eyebrow reveal" data-bind="text.storyEyebrow">Nuestra historia continúa</p>
-      <h2 class="reveal text-lines" id="story-title" data-bind="text.storyTitle">Un sí. Miles de recuerdos.<br>Toda una
-        vida juntos.</h2>
-      <p class="story-message reveal" data-bind="text.storyMessage">Veinticinco años de momentos compartidos, sueños
-        cumplidos y un amor que ha crecido con el tiempo. Hoy queremos celebrar esta hermosa historia rodeados de las
-        personas que forman parte de nuestras vidas.</p>
-      <p class="story-signature reveal">Y volveríamos a elegirnos.</p>
-      <img class="botanical-divider reveal" src="assets/images/olive-divider.svg" alt="" width="240" height="48"
-        loading="lazy">
+    <section class="story story-refined section-wrap section-space" id="historia" aria-labelledby="story-title">
+      <div class="story-layout reveal">
+        <div class="story-heading">
+          <p class="eyebrow" data-bind="text.storyEyebrow">Junto a quienes queremos</p>
+          <h2 id="story-title" data-bind="text.storyTitle">Una vida compartida.</h2>
+        </div>
+        <p class="story-message" data-bind="text.storyMessage">Con gratitud por el camino recorrido, queremos reunir a nuestra familia y amigos en una noche de brindis, música y compañía. Nos hará muy felices contar contigo.</p>
+      </div>
     </section>
 
     <section class="gallery-section section-wrap" id="recuerdos" aria-labelledby="gallery-title">
       <div class="section-heading reveal">
-        <p class="eyebrow" data-bind="gallery.eyebrow">Instantes que se quedan</p>
-        <h2 id="gallery-title" data-bind="gallery.title">25 años de recuerdos</h2>
-        <p class="gallery-message" id="gallery-message" data-bind="gallery.pendingMessage">Muy pronto compartiremos aquí
-          algunas de nuestras fotografías.</p>
+        <h2 id="gallery-title" data-bind="gallery.title">Nuestro álbum</h2>
+        <p class="gallery-message" id="gallery-message" data-bind="gallery.pendingMessage">Pronto añadiremos nuestras fotos favoritas.</p>
       </div>
       <div class="gallery-grid reveal" id="gallery-grid" aria-hidden="true">
         <div class="photo-card">
@@ -200,11 +186,15 @@
     <section class="date-section" aria-labelledby="date-title">
       <div class="section-wrap date-layout reveal">
         <div class="date-copy">
-          <p class="eyebrow" data-bind="text.countdownEyebrow">Una fecha para volver a decir sí</p>
+          <p class="eyebrow" data-bind="text.countdownEyebrow">Reserva la fecha</p>
           <h2 id="date-title" data-bind="text.countdownTitle">Nos vemos para celebrar</h2>
-          <div class="event-date"><span class="date-weekday" data-date="weekday">SÁBADO</span><strong
-              data-date="day">28</strong><span class="date-month"><span data-date="month">NOVIEMBRE</span><span
-                data-date="year">2026</span></span></div>
+          <time class="event-date" id="event-date" datetime="2026-11-28" aria-label="Sábado, 28 de noviembre de 2026">
+            <span class="date-weekday" data-date="weekday">SÁBADO</span>
+            <span class="date-body">
+              <strong data-date="day">28</strong>
+              <span class="date-month"><span data-date="month">NOVIEMBRE</span><span data-date="year">2026</span></span>
+            </span>
+          </time>
           <button class="text-button" id="calendar-button" type="button"><svg class="icon" aria-hidden="true">
               <use href="#i-calendar" />
             </svg> Agregar a mi calendario <svg class="icon small" aria-hidden="true">
@@ -212,22 +202,21 @@
             </svg></button>
         </div>
         <div class="countdown-block">
-          <p class="eyebrow">Falta muy poquito para abrazarnos</p>
+          <p class="eyebrow">Nos vemos en</p>
           <div class="countdown" role="timer" aria-label="Tiempo para la celebración" aria-live="off">
             <div><strong id="count-days">00</strong><span>DÍAS</span></div><i aria-hidden="true">:</i>
             <div><strong id="count-hours">00</strong><span>HORAS</span></div><i aria-hidden="true">:</i>
             <div><strong id="count-minutes">00</strong><span>MINUTOS</span></div><i aria-hidden="true">:</i>
             <div><strong id="count-seconds">00</strong><span>SEGUNDOS</span></div>
           </div>
-          <p class="countdown-note" id="countdown-note" role="status">Cada segundo nos acerca a un nuevo recuerdo.</p>
+          <p class="countdown-note" id="countdown-note" role="status"></p>
         </div>
       </div>
     </section>
 
     <section class="places section-wrap section-space" id="celebracion" aria-labelledby="places-title">
       <div class="section-heading reveal">
-        <p class="eyebrow">El día que queremos compartir</p>
-        <h2 id="places-title" data-bind="text.placesTitle">Dos momentos. Una celebración.</h2>
+        <h2 id="places-title" data-bind="text.placesTitle">Dónde nos encontraremos</h2>
       </div>
       <div class="venue-grid">
         <article class="venue-card reveal">
@@ -267,9 +256,8 @@
 
     <section class="itinerary section-wrap section-space" id="itinerario" aria-labelledby="itinerary-title">
       <div class="itinerary-intro reveal">
-        <p class="eyebrow">Así celebraremos</p>
-        <h2 id="itinerary-title" class="text-lines" data-bind="text.itineraryTitle">Una noche,<br>muchos recuerdos.</h2>
-        <p data-bind="text.itineraryIntro">Cada momento será más especial si lo compartimos contigo.</p>
+        <h2 id="itinerary-title" class="text-lines" data-bind="text.itineraryTitle">El programa<br>del día</h2>
+        <p data-bind="text.itineraryIntro">De la ceremonia al último baile.</p>
         <div class="itinerary-flourish" aria-hidden="true"><img src="assets/images/olive-branch.svg" alt="" width="420"
             height="680" loading="lazy"></div>
       </div>
@@ -278,22 +266,9 @@
 
     <section class="dress-section" aria-labelledby="dress-title">
       <div class="dress-content section-wrap reveal">
-        <div class="dress-icons" aria-hidden="true"><svg class="icon">
-            <use href="#i-suit" />
-          </svg><svg class="icon">
-            <use href="#i-dress" />
-          </svg></div>
-        <div class="dress-details">
-          <p class="eyebrow" id="dress-title">Código de vestimenta</p>
-          <h2 data-bind="dressCode">Formal elegante</h2>
-          <p class="dress-colors" id="dress-palette-label" data-bind="dressColors">Colores de preferencia</p>
-          <ul class="dress-palette" id="dress-palette" role="list" aria-labelledby="dress-palette-label">
-            <li><span class="dress-swatch swatch-brown" aria-hidden="true"></span><span>Café</span></li>
-            <li><span class="dress-swatch swatch-beige" aria-hidden="true"></span><span>Beige</span></li>
-            <li><span class="dress-swatch swatch-olive" aria-hidden="true"></span><span>Verde olivo</span></li>
-          </ul>
-        </div>
-        <p data-bind="dressNote">Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.</p>
+        <div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#i-suit"/></svg><svg class="icon"><use href="#i-dress"/></svg></div>
+        <h2 id="dress-title" data-bind="dressCode">Código de vestimenta</h2>
+        <p data-bind="dressNote">Elige ese atuendo con el que te sientas especial. Te pedimos amablemente evitar las lentejuelas.</p>
       </div>
     </section>
 
@@ -303,12 +278,10 @@
           <use href="#i-gift" />
         </svg>
         <h2 id="gifts-title" data-bind="gifts.title">Mesa de regalos</h2>
-        <p class="gifts-message" data-bind="gifts.message">Si deseas obsequiarnos un detalle, aquí podrás consultar
-          nuestras listas.</p>
+        <p class="gifts-message" data-bind="gifts.message">Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas.</p>
       </div>
       <div class="gift-grid">
         <article class="gift-card reveal" aria-labelledby="amazon-title">
-          <p class="eyebrow">Nuestra lista en</p>
           <h3 id="amazon-title" data-bind="gifts.amazon.name">Amazon</h3>
           <p class="gift-status" id="amazon-gift-status">Próximamente</p>
           <a class="button button-outline" id="amazon-gift" href="#regalos" aria-haspopup="dialog"
@@ -317,7 +290,6 @@
             </svg></a>
         </article>
         <article class="gift-card reveal" aria-labelledby="target-title">
-          <p class="eyebrow">Nuestra lista en</p>
           <h3 id="target-title" data-bind="gifts.target.name">Target</h3>
           <p class="gift-status" id="target-gift-status">Próximamente</p>
           <a class="button button-outline" id="target-gift" href="#regalos" aria-haspopup="dialog"
@@ -331,15 +303,8 @@
     <section class="rsvp-section" id="asistencia" aria-labelledby="rsvp-title">
       <img class="rsvp-branch" src="assets/images/olive-branch.svg" alt="" width="420" height="680" loading="lazy">
       <div class="rsvp-content section-wrap reveal">
-        <p class="eyebrow">Confirma tu asistencia</p>
         <h2 class="text-lines" id="rsvp-title" data-bind="text.rsvpTitle">¿Nos acompañas?</h2>
-        <p data-bind="text.rsvpMessage">Indícanos tu nombre y cuántas personas asistirán para ayudarnos a preparar la
-          recepción.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon"
-            aria-hidden="true">
-            <use href="#i-whatsapp" />
-          </svg> Confirmar asistencia <svg class="icon" aria-hidden="true">
-            <use href="#i-arrow" />
-          </svg></button>
+        <p data-bind="text.rsvpMessage">Dinos tu nombre y cuántas personas asistirán para reservar sus lugares.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Preparar confirmación <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         <p class="rsvp-deadline">Confirma antes del <time data-date="deadline" datetime="2026-11-14">14 de noviembre de
             2026</time></p>
         <p class="rsvp-pending" id="rsvp-pending">WhatsApp estará disponible próximamente.</p>
@@ -347,13 +312,10 @@
     </section>
 
     <footer class="closing section-wrap">
-      <div class="monogram" data-bind="couple.initials" aria-hidden="true">G & S</div>
-      <p class="closing-quote text-lines" data-bind="text.closingQuote">Que sigan los años,<br>que nunca falte el amor.
-      </p>
+      <p class="closing-quote text-lines" data-bind="text.closingQuote">Con cariño,</p>
       <p class="couple-script" data-couple>Gaby <span>&</span> Salvador</p>
-      <time class="closing-date" data-date="hero" datetime="2026-11-28">28 · NOVIEMBRE · 2026</time>
       <div class="footer-bottom">
-        <p data-bind="text.closingThanks">Con amor, siempre.</p><a href="#inicio">Volver al inicio <svg class="icon"
+        <p data-bind="text.closingThanks">Gracias por acompañarnos.</p><a href="#inicio">Volver al inicio <svg class="icon"
             aria-hidden="true">
             <use href="#i-down" />
           </svg></a>

@@ -40,7 +40,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 | `event.location`, `event.scheduleNote` | Lugar general y nota sobre los horarios |
 | `ceremony`, `reception` | Nombre, dirección, horario y URL de cada ubicación |
 | `itinerary` | Horas de inicio, `endTime` opcional, `endDayOffset: 1` para terminar al día siguiente, títulos, descripciones e iconos |
-| `dressCode`, `dressColors`, `dressPalette`, `dressNote` | Vestimenta, título de colores, muestras circulares (`name` y `color` hexadecimal) y nota opcional |
+| `dressCode`, `dressNote` | Título y texto del código de vestimenta |
 | `gifts.amazon.url`, `gifts.target.url` | Enlace de compartir de cada lista de regalos |
 | `gifts.title`, `gifts.message`, `gifts.pendingMessage` | Título, mensaje y aviso de listas pendientes |
 | `rsvp.phone` | WhatsApp internacional, solo dígitos |
@@ -51,7 +51,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 
 ### Fotografías
 
-La sección **25 años de recuerdos** aparece después de Nuestra historia y antes de la fecha. Mientras `gallery.photos` esté vacío, muestra cuatro marcos decorativos y un aviso de próxima disponibilidad; no carga imágenes de ejemplo ni presenta fotos ficticias.
+La sección **Nuestro álbum** aparece después de Nuestra historia y antes de la fecha. Mientras `gallery.photos` esté vacío, muestra cuatro marcos decorativos y un aviso de próxima disponibilidad; no carga imágenes de ejemplo ni presenta fotos ficticias.
 
 Cuando tengas las fotografías:
 
@@ -72,11 +72,11 @@ Puedes cambiar el título, la frase y el aviso pendiente en `gallery.title`, `ga
 
 ### Mesa de regalos de Amazon y Target
 
-En `js/config.js`, pega el enlace de compartir de cada lista en `gifts.amazon.url` o `gifts.target.url`. Los campos están vacíos porque las listas todavía no se han creado. Cada botón muestra un aviso de próxima disponibilidad; no dirige a una lista ficticia ni a la página genérica de la tienda.
+En `js/config.js`, pega el enlace de compartir de cada lista en `gifts.amazon.url` o `gifts.target.url`. Los campos están vacíos porque las listas todavía no se han creado. Mientras una lista esté pendiente, se muestra «Próximamente» y su botón permanece oculto. Al añadir un enlace válido, aparece el botón de esa tienda.
 
 Al guardar una URL válida, el botón abre la lista directamente en otra pestaña con `noopener noreferrer`. Amazon admite enlaces HTTPS de `amazon.com`, `amazon.com.mx`, `amzn.to` y `a.co`; Target admite `target.com`. También se permiten sus subdominios. Se rechazan otros dominios, protocolos, puertos y URLs con credenciales. Usa siempre el enlace de la lista que los invitados pueden ver, en lugar del enlace privado para administrarla.
 
-El mensaje `gifts.pendingMessage` admite `{store}` para incluir el nombre de la tienda. `gifts.amazon.name` y `gifts.target.name` controlan los nombres visibles.
+`gifts.amazon.name` y `gifts.target.name` controlan los nombres visibles.
 
 ### Fecha y zona horaria
 

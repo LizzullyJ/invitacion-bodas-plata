@@ -133,11 +133,16 @@
     emphasis.textContent = split >= 0 ? title.slice(split + 1) : title;
     $("#hero-title").replaceChildren(...(split >= 0 ? [document.createTextNode(title.slice(0, split)), document.createElement("br"), emphasis] : [emphasis]));
     $(".brand").setAttribute("aria-label", `${couple}, inicio`);
-    $(".hero-art").setAttribute("aria-label", `${config.couple.anniversaryYears} años de amor`);
+    $(".hero-art").setAttribute("aria-label", `${config.couple.anniversaryYears} años juntos`);
     document.title = `${config.couple.name1} & ${config.couple.name2} · Bodas de Plata`;
     $('meta[property="og:title"]').content = document.title;
     if (eventStart) {
       const year = Number(datePart(eventStart, { year: "numeric" }));
+      const dateCard = $("#event-date");
+      if (dateCard) {
+        dateCard.dateTime = localDateString(eventStart);
+        dateCard.setAttribute("aria-label", datePart(eventStart, { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
+      }
       const anniversary = Number(config.couple.anniversaryYears);
       $$('[data-years]').forEach((node) => { node.textContent = `${year - anniversary} — ${year}`; });
       const display = `${datePart(eventStart, { day: "numeric" })} · ${datePart(eventStart, { month: "long" })} · ${year}`.toLocaleUpperCase("es-MX");
@@ -151,6 +156,7 @@
     } else {
       $$('[data-date]').filter((node) => node.dataset.date !== "deadline").forEach((node) => { node.textContent = "Fecha por confirmar"; node.removeAttribute("datetime"); });
       $("#calendar-button").hidden = true;
+      if ($("#event-date")) $("#event-date").hidden = true;
     }
     try {
       const deadline = zonedDateTime(config.rsvp.deadline, "12:00", timeZone);
@@ -165,7 +171,6 @@
       } catch { node.textContent = "Horario por confirmar"; }
     }
     renderTimeline();
-    renderDressPalette();
     renderGallery();
   }
 
@@ -225,25 +230,6 @@
     $("#gallery-message").textContent = config.gallery.message;
   }
 
-  function renderDressPalette() {
-    const list = $("#dress-palette");
-    if (!list || !Array.isArray(config.dressPalette)) return;
-    const fragment = document.createDocumentFragment();
-    for (const color of config.dressPalette) {
-      if (!color || !/^#[0-9a-f]{6}$/i.test(String(color.color))) continue;
-      const item = document.createElement("li");
-      const swatch = document.createElement("span");
-      swatch.className = "dress-swatch";
-      swatch.setAttribute("aria-hidden", "true");
-      swatch.style.setProperty("--swatch-color", color.color);
-      const label = document.createElement("span");
-      label.textContent = String(color.name || "");
-      item.append(swatch, label);
-      fragment.append(item);
-    }
-    list.replaceChildren(fragment);
-  }
-
   function renderTimeline() {
     const fragment = document.createDocumentFragment();
     for (const event of config.itinerary || []) {
@@ -261,7 +247,10 @@
       const description = document.createElement("p");
       let range = "";
       if (event.endTime) {
-        try { range = `${scheduleTime(event)}.`; } catch { /* Conservar la descripción sin un rango inválido. */ }
+        try {
+          const endHour = parseTime(event.endTime).hour % 12 || 12;
+          range = `Hasta ${endHour === 1 ? "la" : "las"} ${formatClock(event.endTime)}${event.endDayOffset ? " del día siguiente." : ""}`;
+        } catch { /* Conservar la descripción sin un horario final válido. */ }
       }
       description.textContent = [event.description, range].filter(Boolean).join(" ");
       details.append(title, description);
@@ -347,6 +336,8 @@
       const link = $(`#${store}-gift`);
       const status = $(`#${store}-gift-status`);
       const url = safeGiftURL(list.url, store);
+      link.hidden = !url;
+      status.hidden = Boolean(url);
       if (url) {
         link.href = url;
         link.target = "_blank";
@@ -354,7 +345,7 @@
         link.removeAttribute("aria-haspopup");
         link.removeAttribute("aria-describedby");
         link.setAttribute("aria-label", `Ver nuestra lista de regalos en ${list.name} (abre otra pestaña)`);
-        status.textContent = "Elegido con mucho cariño";
+        status.textContent = "Lista disponible";
       } else {
         link.addEventListener("click", (event) => {
           event.preventDefault();

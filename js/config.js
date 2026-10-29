@@ -40,25 +40,18 @@ const invitationConfig = {
     { time: "21:00", endTime: "01:00", endDayOffset: 1, title: "Baile", icon: "music" }
   ],
   gallery: {
-    eyebrow: "Instantes que se quedan",
-    title: "25 años de recuerdos",
-    message: "Pequeños instantes de una gran historia.",
-    pendingMessage: "Muy pronto compartiremos aquí algunas de nuestras fotografías.",
+    title: "Nuestro álbum",
+    message: "Algunos de nuestros momentos favoritos.",
+    pendingMessage: "Pronto añadiremos nuestras fotos favoritas.",
     // Cuando tengas las fotos, cópialas a assets/images/ y agrega sus datos.
     // Ejemplo: { src: "assets/images/boda.jpg", alt: "Nuestra boda", caption: "El comienzo" }
     photos: []
   },
-  dressCode: "Formal elegante",
-  dressColors: "Colores de preferencia",
-  dressPalette: [
-    { name: "Café", color: "#795B44" },
-    { name: "Beige", color: "#D8C5AA" },
-    { name: "Verde olivo", color: "#6B7654" }
-  ],
-  dressNote: "Elige un atuendo que te haga sentir especial y con el que disfrutes cada momento de esta celebración. Solo te pedimos amablemente evitar las lentejuelas.",
+  dressCode: "Código de vestimenta",
+  dressNote: "Elige ese atuendo con el que te sientas especial. Te pedimos amablemente evitar las lentejuelas.",
   gifts: {
     title: "Mesa de regalos",
-    message: "Tu compañía es el regalo más valioso para nosotros. Sin embargo, si deseas tener un detalle especial, hemos preparado nuestras listas de regalos, que podrás consultar a continuación.",
+    message: "Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas.",
     pendingMessage: "Nuestra lista en {store} estará disponible próximamente.",
     // Pega el enlace de compartir de cada lista cuando esté lista.
     // Vacío muestra un aviso de próxima disponibilidad, sin inventar una lista.
@@ -74,21 +67,20 @@ const invitationConfig = {
     pendingNote: "WhatsApp estará disponible próximamente. Puedes preparar y copiar tu mensaje."
   },
   text: {
-    eyebrow: "Celebrando 25 años de amor",
     heroQuote: "Después de 25 años, seguimos eligiéndonos.",
-    storyEyebrow: "Nuestra historia continúa",
-    storyTitle: "Un sí. Miles de recuerdos.\nToda una vida juntos.",
-    storyMessage: "Veinticinco años de momentos compartidos, sueños cumplidos y un amor que ha crecido con el tiempo. Hoy queremos celebrar esta hermosa historia rodeados de las personas que forman parte de nuestras vidas.",
-    countdownEyebrow: "Una fecha para volver a decir sí",
+    storyEyebrow: "Junto a quienes queremos",
+    storyTitle: "Una vida compartida.",
+    storyMessage: "Con gratitud por el camino recorrido, queremos reunir a nuestra familia y amigos en una noche de brindis, música y compañía. Nos hará muy felices contar contigo.",
+    countdownEyebrow: "Reserva la fecha",
     countdownTitle: "Nos vemos para celebrar",
-    countdownComplete: "¡Llegó el día de celebrar nuestro amor!",
-    placesTitle: "Dos momentos. Una celebración.",
-    itineraryTitle: "Una noche,\nmuchos recuerdos.",
-    itineraryIntro: "Cada momento será más especial si lo compartimos contigo.",
+    countdownComplete: "¡Hoy es el gran día!",
+    placesTitle: "Dónde nos encontraremos",
+    itineraryTitle: "El programa\ndel día",
+    itineraryIntro: "De la ceremonia al último baile.",
     rsvpTitle: "¿Nos acompañas?",
-    rsvpMessage: "Indícanos tu nombre y cuántas personas asistirán para ayudarnos a preparar la recepción.",
-    closingQuote: "Que sigan los años,\nque nunca falte el amor.",
-    closingThanks: "Con amor, siempre.",
+    rsvpMessage: "Dinos tu nombre y cuántas personas asistirán para reservar sus lugares.",
+    closingQuote: "Con cariño,",
+    closingThanks: "Gracias por acompañarnos.",
     shareTitle: "Gaby & Salvador · Bodas de Plata",
     shareMessage: "Celebramos 25 años de amor. Nos encantará compartir este día contigo."
   }
