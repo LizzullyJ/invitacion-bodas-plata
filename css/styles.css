@@ -416,17 +416,13 @@ h1 em { font-weight: 400; }
   .closing::before, .closing::after { width: 60px; height: 60px; }
 }
 
-/* Una fotografía centrada, con paspartú y un fondo de papel discreto. */
-.opening-photo { position: relative; isolation: isolate; width: min(420px, calc(100% - 72px)); margin: 28px auto 16px; padding: 12px; border: 1px solid #b49b6899; background: var(--cream); box-shadow: 0 18px 42px #59463712; }
-.opening-photo::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1; border: 1px solid #b49b684a; background: #e5d8c54d; pointer-events: none; }
-.opening-photo::after { content: ""; position: absolute; inset: 6px; border: 1px solid #c3a46b36; pointer-events: none; }
-.opening-photo img { display: block; width: 100%; height: auto; aspect-ratio: 213 / 320; object-fit: contain; }
+/* Fotografía de apertura a todo el ancho, conservando su proporción. */
+.opening-photo { width: 100%; max-width: none; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
+.opening-photo::before, .opening-photo::after { content: none; }
+.opening-photo img { display: block; width: 100%; max-width: none; height: auto; aspect-ratio: 213 / 320; object-fit: contain; }
 .opening-photo + .hero { min-height: 0; align-items: start; padding-top: 30px; }
 .opening-photo + .hero::before { content: none; }
 @media (max-width: 600px) {
-  .opening-photo { width: min(340px, calc(100% - 60px)); margin-top: 20px; margin-bottom: 12px; padding: 9px; }
-  .opening-photo::before { inset: 10px -10px -10px 10px; }
-  .opening-photo::after { inset: 4px; }
   .opening-photo + .hero { padding-top: 24px; }
 }
 /* Detalles de papelería y símbolos con mayor presencia. */
