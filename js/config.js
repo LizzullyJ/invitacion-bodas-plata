@@ -8,7 +8,7 @@ const invitationConfig = {
     anniversaryYears: 25
   },
   event: {
-    title: "Nuestras Bodas de Plata",
+    title: "Bodas de Plata",
     date: "2026-11-28",
     time: "13:00",
     // Oklahoma City usa la zona IANA America/Chicago (hora central).

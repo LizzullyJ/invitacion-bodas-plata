@@ -127,11 +127,9 @@
       ampersand.textContent = "&";
       node.replaceChildren(document.createTextNode(`${config.couple.name1} `), ampersand, document.createTextNode(` ${config.couple.name2}`));
     });
-    const title = String(config.event.title).trim();
-    const split = title.indexOf(" ");
     const emphasis = document.createElement("em");
-    emphasis.textContent = split >= 0 ? title.slice(split + 1) : title;
-    $("#hero-title").replaceChildren(...(split >= 0 ? [document.createTextNode(title.slice(0, split)), document.createElement("br"), emphasis] : [emphasis]));
+    emphasis.textContent = String(config.event.title).trim();
+    $("#hero-title").replaceChildren(emphasis);
     $(".brand").setAttribute("aria-label", `${couple}, inicio`);
     $(".hero-art").setAttribute("aria-label", `${config.couple.anniversaryYears} años juntos`);
     document.title = `${config.couple.name1} & ${config.couple.name2} · Bodas de Plata`;
