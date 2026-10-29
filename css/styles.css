@@ -421,23 +421,27 @@ h1 em { font-weight: 400; }
 .opening-photo { width: 100%; max-width: none; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
 .opening-photo::before, .opening-photo::after { content: none; }
 .opening-photo img { display: block; width: 100%; max-width: none; height: auto; aspect-ratio: 213 / 320; object-fit: contain; }
-.photo-hero::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, #13251db3 0%, #13251d75 28%, #13251d00 61%); pointer-events: none; }
-.photo-hero-copy { position: absolute; z-index: 2; top: clamp(24px, 7.5vw, 108px); left: 50%; width: min(940px, calc(100% - 64px)); transform: translateX(-50%); color: var(--cream); text-align: center; text-shadow: 0 2px 18px #12201980; }
+.photo-hero::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, #13251db3 0%, #13251d75 28%, #13251d00 61%), linear-gradient(0deg, #1020198c 0%, #10201900 13%); pointer-events: none; }
+.photo-hero-copy { position: absolute; z-index: 2; top: clamp(24px, 7.5vw, 108px); left: 0; right: 0; width: min(1040px, calc(100% - 80px)); margin-inline: auto; color: var(--cream); text-align: center; text-shadow: 0 2px 18px #12201980; }
 .photo-hero h1 { font-size: clamp(28px, 3.4vw, 46px); line-height: 1.1; letter-spacing: .01em; color: var(--cream); }
-.photo-hero .couple-script { margin: 18px 0 28px; font-size: clamp(64px, 7.8vw, 112px); line-height: 1.12; color: var(--cream); }
+.photo-hero .couple-script { margin: 16px 0 0; padding: .05em .12em .12em; font-size: clamp(64px, 7.8vw, 112px); line-height: 1.22; color: var(--cream); }
 .photo-hero .couple-script span { font-size: .76em; color: #e8d4ad; margin-inline: 7px; }
-.photo-hero .photo-rsvp { min-height: 48px; padding: 13px 22px; font-size: 12px; gap: 12px; color: var(--olive); background: var(--cream); border-color: #fffcf7b3; text-shadow: none; box-shadow: 0 6px 22px #101b1520; }
+.photo-hero .photo-rsvp { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(12px, 2vw, 28px); display: flex; align-items: center; justify-content: center; width: max-content; max-width: calc(100% - 48px); min-height: 44px; margin-inline: auto; padding: 6px 2px; gap: 9px; font-size: 12px; font-weight: 500; line-height: 1.5; letter-spacing: .02em; color: var(--cream); background: transparent; border: 0; box-shadow: none; text-decoration: underline; text-decoration-color: #fffcf780; text-underline-offset: 6px; text-shadow: 0 1px 8px #102019b3; }
+.photo-hero .photo-rsvp .icon { width: 17px; height: 17px; }
+.photo-hero .photo-rsvp .icon.small { width: 14px; height: 14px; }
+.photo-hero .photo-rsvp:hover { text-decoration-color: currentColor; }
+.photo-hero .photo-rsvp:focus-visible { outline-color: var(--cream); }
 .photo-hero + .anniversary-section { min-height: 0; padding-top: 56px; }
 .photo-hero + .anniversary-section::before { content: none; }
 .anniversary-section .hero-copy { width: 100%; max-width: 500px; margin-inline: auto; padding-bottom: 0; text-align: center; }
 .anniversary-section .hero-date { justify-content: center; margin: 0 auto; font-size: 10px; }
 .anniversary-section .hero-quote { max-width: 440px; margin: 26px auto 0; color: var(--brown); font-family: var(--serif); font-size: clamp(27px, 3vw, 40px); line-height: 1.35; }
 @media (max-width: 600px) {
-  .photo-hero-copy { top: 22px; width: calc(100% - 40px); }
+  .photo-hero-copy { top: 22px; width: calc(100% - 56px); }
   .photo-hero h1 { font-size: clamp(25px, 6.7vw, 30px); }
-  .photo-hero .couple-script { margin: 12px 0 18px; font-size: clamp(42px, 13.2vw, 58px); line-height: 1.06; }
+  .photo-hero .couple-script { margin: 12px 0 0; font-size: clamp(42px, 13.2vw, 58px); line-height: 1.22; }
   .photo-hero .couple-script span { margin-inline: 4px; }
-  .photo-hero .photo-rsvp { min-height: 44px; padding: 11px 16px; font-size: 11px; gap: 10px; }
+  .photo-hero .photo-rsvp { bottom: 10px; font-size: 11px; gap: 8px; }
   .photo-hero + .anniversary-section { padding-top: 38px; gap: 30px; }
   .anniversary-section .hero-date { font-size: 9px; }
   .anniversary-section .hero-quote { margin-top: 20px; font-size: 28px; max-width: 330px; }
