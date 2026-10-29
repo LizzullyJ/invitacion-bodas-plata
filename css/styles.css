@@ -416,6 +416,27 @@ h1 em { font-weight: 400; }
   .closing::before, .closing::after { width: 60px; height: 60px; }
 }
 
+/* Una fotografía de los esposos y la confirmación en la portada. */
+.hero-art.hero-photo-art { width: min(100%, 380px); height: auto; margin: 0 auto; position: relative; }
+.hero-photo-art .hero-photo { position: relative; margin: 0; padding: 10px; border: 1px solid #b49b68a6; background: var(--cream); box-shadow: 0 16px 42px #59463712; }
+.hero-photo-art .hero-photo::after { content: ""; position: absolute; inset: 5px; border: 1px solid #c3a46b45; pointer-events: none; }
+.hero-photo-art .hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 213 / 320; object-fit: contain; }
+.hero-photo-art .photo-anniversary { position: absolute; top: 24px; left: -20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 74px; height: 74px; border: 1px solid var(--gold-line); border-radius: 50%; color: var(--olive); background: var(--cream); box-shadow: 0 4px 16px #59463710; }
+.hero-photo-art .photo-anniversary > span:first-child { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 36px; line-height: 1; }
+.hero-photo-art .photo-anniversary > span:last-child { font-size: 8px; line-height: 1.4; letter-spacing: .2em; }
+.hero .hero-rsvp { margin-top: 24px; font-size: 12px; gap: 14px; min-width: 220px; max-width: 100%; }
+@media (max-width: 800px) and (min-width: 601px) {
+  .hero-photo-art .photo-anniversary { width: 64px; height: 64px; left: -13px; top: 20px; }
+  .hero-photo-art .photo-anniversary > span:first-child { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .hero-art.hero-photo-art { width: min(300px, calc(100% - 24px)); margin: 0 auto; }
+  .hero-photo-art .hero-photo { padding: 8px; }
+  .hero-photo-art .hero-photo::after { inset: 4px; }
+  .hero-photo-art .photo-anniversary { width: 64px; height: 64px; top: 20px; left: -17px; }
+  .hero-photo-art .photo-anniversary > span:first-child { font-size: 32px; }
+  .hero .hero-rsvp { margin-top: 22px; min-width: 0; padding-inline: 20px; }
+}
 /* Detalles de papelería y símbolos con mayor presencia. */
 .icon { stroke-width: 1.7; }
 .button .icon { width: 20px; height: 20px; stroke-width: 1.8; }
