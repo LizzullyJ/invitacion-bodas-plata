@@ -1,4 +1,4 @@
-# Gaby & Salvador · Bodas de Plata
+# Salvador & Gabriela · Bodas de Plata
 
 Invitación digital con ilustración botánica original en SVG, tonos marfil y olivo, animaciones suaves, cuenta regresiva, calendario, ubicaciones independientes, mensaje de asistencia y opción de compartir. HTML, CSS y JavaScript vanilla: sin frameworks ni dependencias.
 
@@ -21,7 +21,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 - **Horario:** ceremonia a la 1:00 p. m. y recepción a las 5:00 p. m., en hora local de Oklahoma City (`America/Chicago`).
 - **Límite de confirmación:** 14 de noviembre de 2026, fecha sugerida editable.
 - **Ceremonia:** Holy Spirit Catholic Church, 1212 N Sara Rd, Mustang, OK 73064. **Recepción:** La Joya Event Center, 3830 N MacArthur Blvd, Warr Acres, OK 73122. Cada botón de Maps usa la dirección proporcionada.
-- **WhatsApp:** pendiente. No se utiliza ningún teléfono ficticio. El formulario prepara y copia el mensaje; no registra ni confirma asistencias. Al configurar un teléfono, el botón abre WhatsApp con ese mensaje.
+- **WhatsApp:** configurado. El formulario abre un mensaje con los datos del invitado; la confirmación se completa al enviarlo en WhatsApp. La página no registra asistencias automáticamente.
 - **Itinerario:** comida de 6:00 a 8:00 p. m.; baile de 9:00 p. m. a 1:00 a. m. El calendario abarca desde la ceremonia hasta el cierre del baile.
 - **Mesa de regalos:** Amazon y Target, con enlaces pendientes. Cada botón muestra un aviso de próxima disponibilidad hasta añadir su lista real.
 
@@ -43,7 +43,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 | `dressCode`, `dressNote` | Título y texto del código de vestimenta |
 | `gifts.amazon.url`, `gifts.target.url` | Enlace de compartir de cada lista de regalos |
 | `gifts.title`, `gifts.message`, `gifts.pendingMessage` | Título, mensaje y aviso de listas pendientes |
-| `rsvp.phone` | WhatsApp internacional, solo dígitos |
+| `rsvp.phone` | WhatsApp internacional; admite espacios, guiones, paréntesis y + inicial |
 | `rsvp.deadline` | Fecha límite para confirmar |
 | `rsvp.message` | Plantilla editable del mensaje |
 | `text` | Frases de la portada, historia, cierre y otras secciones |

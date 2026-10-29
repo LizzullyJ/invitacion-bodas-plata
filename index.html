@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F5F0E8">
   <meta name="description"
-    content="Gaby y Salvador te invitan a celebrar 25 años de amor. Acompáñanos el 28 de noviembre de 2026 en nuestras Bodas de Plata.">
+    content="Salvador y Gabriela te invitan a celebrar 25 años de amor. Acompáñanos el 28 de noviembre de 2026 en nuestras Bodas de Plata.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
-  <meta property="og:title" content="Gaby & Salvador · Bodas de Plata">
+  <meta property="og:title" content="Salvador & Gabriela · Bodas de Plata">
   <meta property="og:description"
     content="28 de noviembre de 2026 · Oklahoma City. Ceremonia a la 1:00 p. m. y recepción a las 5:00 p. m.">
-  <title>Gaby & Salvador · Bodas de Plata</title>
+  <title>Salvador & Gabriela · Bodas de Plata</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,8 +106,7 @@
   </svg>
 
   <header class="site-header">
-    <a class="brand" href="#inicio" aria-label="Gaby y Salvador, inicio"><span data-bind="couple.initials">G &
-        S</span><span class="brand-caption">BODAS DE PLATA</span></a>
+    <a class="brand" href="#inicio" aria-label="Salvador y Gabriela, inicio"><span data-bind="couple.initials">S &amp; G</span><span class="brand-caption">BODAS DE PLATA</span></a>
     <nav aria-label="Navegación principal">
       <a href="#historia">Nuestra historia</a>
       <a href="#recuerdos">Fotos</a>
@@ -118,15 +117,19 @@
   </header>
 
   <main id="contenido">
-    <figure class="opening-photo entrance">
-      <img src="assets/images/salvador-y-gabriela.jpg" alt="Los esposos abrazados frente a Union Station." width="852" height="1280" fetchpriority="high" decoding="async">
-    </figure>
+    <section class="photo-hero" id="inicio" aria-labelledby="hero-title">
+      <figure class="opening-photo">
+        <img src="assets/images/salvador-y-gabriela.jpg" alt="Salvador y Gabriela abrazados frente a Union Station." width="852" height="1280" fetchpriority="high" decoding="async">
+      </figure>
+      <div class="photo-hero-copy entrance">
+        <h1 id="hero-title"><em>Bodas de Plata</em></h1>
+        <p class="couple-script" data-couple>Salvador <span>&amp;</span> Gabriela</p>
+        <a class="button button-cream photo-rsvp" id="photo-rsvp" href="#asistencia" data-open-rsvp><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Confirmar asistencia <svg class="icon small" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
 
-    <section class="hero section-wrap" id="inicio" aria-labelledby="hero-title">
+    <section class="hero anniversary-section section-wrap" id="aniversario" aria-label="25 años juntos">
       <div class="hero-copy">
-
-        <h1 class="entrance" id="hero-title"><em>Bodas de Plata</em></h1>
-        <p class="couple-script entrance" data-couple>Gaby <span>&</span> Salvador</p>
         <div class="hero-date entrance"><span></span><time data-date="hero" datetime="2026-11-28">28 · NOVIEMBRE ·
             2026</time><span></span></div>
         <p class="hero-quote entrance" data-bind="text.heroQuote">Después de 25 años, seguimos eligiéndonos.</p>
@@ -304,16 +307,16 @@
       <img class="rsvp-branch" src="assets/images/olive-branch.svg" alt="" width="420" height="680" loading="lazy">
       <div class="rsvp-content section-wrap reveal">
         <h2 class="text-lines" id="rsvp-title" data-bind="text.rsvpTitle">¿Nos acompañas?</h2>
-        <p data-bind="text.rsvpMessage">Dinos tu nombre y cuántas personas asistirán para reservar sus lugares.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Preparar confirmación <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p data-bind="text.rsvpMessage">Dinos tu nombre y cuántas personas asistirán para reservar sus lugares.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span id="rsvp-button-label">Confirmar por WhatsApp</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         <p class="rsvp-deadline">Confirma antes del <time data-date="deadline" datetime="2026-11-14">14 de noviembre de
             2026</time></p>
-        <p class="rsvp-pending" id="rsvp-pending">WhatsApp estará disponible próximamente.</p>
+        <p class="rsvp-pending" id="rsvp-pending" hidden>WhatsApp estará disponible próximamente.</p>
       </div>
     </section>
 
     <footer class="closing section-wrap">
       <p class="closing-quote text-lines" data-bind="text.closingQuote">Con cariño,</p>
-      <p class="couple-script" data-couple>Gaby <span>&</span> Salvador</p>
+      <p class="couple-script" data-couple>Salvador <span>&amp;</span> Gabriela</p>
       <div class="footer-bottom">
         <p data-bind="text.closingThanks">Gracias por acompañarnos.</p><a href="#inicio">Volver al inicio <svg class="icon"
             aria-hidden="true">
@@ -337,7 +340,7 @@
         <use href="#i-heart" />
       </svg></div>
     <p class="eyebrow">Tu respuesta</p>
-    <h2 id="dialog-title">Prepara tu confirmación</h2>
+    <h2 id="dialog-title">Confirma tu asistencia</h2>
     <p class="dialog-note" id="rsvp-mode-note"></p>
     <form id="rsvp-form">
       <label for="guest-name">Tu nombre</label><input id="guest-name" name="guestName" autocomplete="name"
@@ -354,7 +357,7 @@
         name="message" rows="5" maxlength="2000" required></textarea>
       <button class="button button-olive" id="rsvp-submit" type="submit"><svg class="icon" aria-hidden="true">
           <use href="#i-copy" />
-        </svg><span id="rsvp-submit-label">Copiar mi mensaje</span></button>
+        </svg><span id="rsvp-submit-label">Continuar en WhatsApp</span></button>
       <p class="form-status" id="rsvp-status" role="status"></p>
     </form>
   </dialog>
@@ -405,7 +408,7 @@
   </dialog>
   <noscript>
     <p class="noscript-note">Para ver la cuenta regresiva y preparar tu confirmación, activa JavaScript. Celebra con
-      Gaby y Salvador el 28 de noviembre de 2026. Ceremonia a la 1:00 p. m. en Holy Spirit Catholic Church, 1212 N Sara
+      Salvador y Gabriela el 28 de noviembre de 2026. Ceremonia a la 1:00 p. m. en Holy Spirit Catholic Church, 1212 N Sara
       Rd, Mustang, OK 73064. Recepción a las 5:00 p. m. en La Joya Event Center, 3830 N MacArthur Blvd, Warr Acres, OK
       73122. Horarios de Oklahoma City.</p>
   </noscript>

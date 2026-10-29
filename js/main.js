@@ -446,7 +446,7 @@
   }
 
   function whatsappPhone(value) {
-    const phone = String(value || "").trim();
+    const phone = String(value || "").trim().replace(/^\+/, "").replace(/[\s().-]/g, "");
     return /^[1-9]\d{7,14}$/.test(phone) ? phone : null;
   }
 
@@ -472,10 +472,19 @@
       }
     };
     $("#rsvp-pending").hidden = Boolean(phone);
-    $("#rsvp-mode-note").textContent = phone ? "Prepara tu mensaje y envíalo por WhatsApp para confirmar tu asistencia." : config.rsvp.pendingNote;
+    $("#rsvp-button-label").textContent = phone ? "Confirmar por WhatsApp" : "Preparar confirmación";
+    $("#rsvp-button use").setAttribute("href", phone ? "#i-whatsapp" : "#i-heart");
+    $("#rsvp-mode-note").textContent = phone ? "Completa tus datos y abre WhatsApp para enviar tu confirmación." : config.rsvp.pendingNote;
     $("#rsvp-submit-label").textContent = phone ? "Continuar en WhatsApp" : "Copiar mi mensaje";
     $("#rsvp-submit use").setAttribute("href", phone ? "#i-whatsapp" : "#i-copy");
-    $("#rsvp-button").addEventListener("click", () => { syncMessage(); status.textContent = ""; openDialog(dialog); });
+    const openConfirmation = (event) => {
+      event.preventDefault();
+      syncMessage();
+      status.textContent = "";
+      openDialog(dialog);
+    };
+    $("#rsvp-button").addEventListener("click", openConfirmation);
+    $$("[data-open-rsvp]").forEach((link) => link.addEventListener("click", openConfirmation));
     $("#guest-name").addEventListener("input", syncMessage);
     $("#guest-count").addEventListener("change", syncMessage);
     $("#rsvp-form").addEventListener("submit", async (event) => {

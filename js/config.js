@@ -59,9 +59,9 @@ const invitationConfig = {
     target: { name: "Target", url: "https://www.target.com/gift-registry/gift/Salvador-Gaby-C" }
   },
   rsvp: {
-    // Escribe el número internacional, solo dígitos. Para México: 52 + 10 dígitos.
+    // Número internacional con código de país; admite +, espacios y guiones.
     // No uses un número ficticio. Vacío permite preparar y copiar el mensaje.
-    phone: "",
+    phone: "1 405-414-3552",
     deadline: "2026-11-14",
     message: "¡Hola, {couple}! Soy {name}. Confirmo la asistencia de {guests} a sus Bodas de Plata el {date}.",
     pendingNote: "WhatsApp estará disponible próximamente. Puedes preparar y copiar tu mensaje."
@@ -81,7 +81,7 @@ const invitationConfig = {
     rsvpMessage: "Dinos tu nombre y cuántas personas asistirán para reservar sus lugares.",
     closingQuote: "Con cariño,",
     closingThanks: "Gracias por acompañarnos.",
-    shareTitle: "Gaby & Salvador · Bodas de Plata",
+    shareTitle: "Salvador & Gabriela · Bodas de Plata",
     shareMessage: "Celebramos 25 años de amor. Nos encantará compartir este día contigo."
   }
 };
