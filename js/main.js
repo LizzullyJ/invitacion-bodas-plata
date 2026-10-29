@@ -230,6 +230,42 @@
     }
   }
 
+  function safeGiftURL(value, store) {
+    if (!value) return null;
+    try {
+      const url = new URL(String(value));
+      if (url.protocol !== "https:" || url.username || url.password || url.port) return null;
+      const domains = store === "amazon" ? ["amazon.com", "amazon.com.mx", "amzn.to", "a.co"] : store === "target" ? ["target.com"] : [];
+      if (!domains.some((domain) => url.hostname === domain || url.hostname.endsWith(`.${domain}`))) return null;
+      return url.href;
+    } catch { return null; }
+  }
+
+  function initGifts() {
+    for (const store of ["amazon", "target"]) {
+      const list = config.gifts[store];
+      const link = $(`#${store}-gift`);
+      const status = $(`#${store}-gift-status`);
+      const url = safeGiftURL(list.url, store);
+      if (url) {
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.removeAttribute("aria-haspopup");
+        link.removeAttribute("aria-describedby");
+        link.setAttribute("aria-label", `Ver nuestra lista de regalos en ${list.name} (abre otra pestaña)`);
+        status.textContent = "Elegido con mucho cariño";
+      } else {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          $("#gift-dialog-title").textContent = `Nuestra lista en ${list.name}`;
+          $("#gift-dialog-message").textContent = String(config.gifts.pendingMessage).replace(/\{store\}/g, () => String(list.name));
+          openDialog($("#gift-dialog"));
+        });
+      }
+    }
+  }
+
   function initCountdown() {
     if (!eventStart) {
       $(".countdown").hidden = true;
@@ -423,6 +459,7 @@
   hydrateContent();
   initDialogs();
   initMaps();
+  initGifts();
   initCountdown();
   initCalendar();
   initRSVP();

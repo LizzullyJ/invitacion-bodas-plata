@@ -23,6 +23,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 - **Iglesia y recepción:** pendientes. Los botones explican que las direcciones se compartirán pronto. Al configurar una URL válida abren Google Maps directamente.
 - **WhatsApp:** pendiente. No se utiliza ningún teléfono ficticio. El formulario prepara y copia el mensaje; no registra ni confirma asistencias. Al configurar un teléfono, el botón abre WhatsApp con ese mensaje.
 - **Itinerario y código de vestimenta:** propuesta editable.
+- **Mesa de regalos:** Amazon y Target, con enlaces pendientes. Cada botón muestra un aviso de próxima disponibilidad hasta añadir su lista real.
 
 ## Personalizar desde `js/config.js`
 
@@ -40,10 +41,20 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 | `ceremony`, `reception` | Nombre, dirección, horario y URL de cada ubicación |
 | `itinerary` | Horas, títulos, descripciones e iconos de los momentos |
 | `dressCode`, `dressNote` | Vestimenta y nota opcional |
+| `gifts.amazon.url`, `gifts.target.url` | Enlace de compartir de cada lista de regalos |
+| `gifts.title`, `gifts.message`, `gifts.pendingMessage` | Título, mensaje y aviso de listas pendientes |
 | `rsvp.phone` | WhatsApp internacional, solo dígitos |
 | `rsvp.deadline` | Fecha límite para confirmar |
 | `rsvp.message` | Plantilla editable del mensaje |
 | `text` | Frases de la portada, historia, cierre y otras secciones |
+
+### Mesa de regalos de Amazon y Target
+
+En `js/config.js`, pega el enlace de compartir de cada lista en `gifts.amazon.url` o `gifts.target.url`. Los campos están vacíos porque las listas todavía no se han creado. Cada botón muestra un aviso de próxima disponibilidad; no dirige a una lista ficticia ni a la página genérica de la tienda.
+
+Al guardar una URL válida, el botón abre la lista directamente en otra pestaña con `noopener noreferrer`. Amazon admite enlaces HTTPS de `amazon.com`, `amazon.com.mx`, `amzn.to` y `a.co`; Target admite `target.com`. También se permiten sus subdominios. Se rechazan otros dominios, protocolos, puertos y URLs con credenciales. Usa siempre el enlace de la lista que los invitados pueden ver, en lugar del enlace privado para administrarla.
+
+El mensaje `gifts.pendingMessage` admite `{store}` para incluir el nombre de la tienda. `gifts.amazon.name` y `gifts.target.name` controlan los nombres visibles.
 
 ### Fecha y zona horaria
 

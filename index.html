@@ -39,6 +39,7 @@
       <symbol id="i-rings" viewBox="0 0 64 40"><circle cx="24" cy="23" r="13"/><circle cx="42" cy="23" r="13"/><path d="m18 8 6-6 6 6m-10-2h8m8 5 6-6 6 6"/></symbol>
       <symbol id="i-dress" viewBox="0 0 48 64"><path d="m17 5 7 5 7-5 3 12-5 8 12 32H7l12-32-5-8 3-12Zm2 20h10M17 5V1m14 4V1"/></symbol>
       <symbol id="i-suit" viewBox="0 0 48 64"><path d="m15 5 9 5 9-5 9 8-4 43H10L6 13l9-8Zm0 0 9 30 9-30M24 35v21M11 10l5 9-4 4 12 12m13-25-5 9 4 4-12 12m-4-22 4 4 4-4m-4 4-3 9 3 5 3-5-3-9"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 40 40"><path d="M6 19v16h28V19M3 12h34v7H3zM20 12v23M20 12H12a4.5 4.5 0 1 1 4.5-4.5L20 12Zm0 0h8a4.5 4.5 0 1 0-4.5-4.5L20 12Z"/></symbol>
     </defs>
   </svg>
 
@@ -48,6 +49,7 @@
       <a href="#historia">Nuestra historia</a>
       <a href="#celebracion">La celebración</a>
       <a href="#itinerario">Itinerario</a>
+      <a href="#regalos">Mesa de regalos</a>
     </nav>
     <a class="header-rsvp" href="#asistencia">Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </header>
@@ -139,6 +141,29 @@
       <div class="dress-content section-wrap reveal"><div class="dress-icons" aria-hidden="true"><svg class="icon"><use href="#i-suit"/></svg><svg class="icon"><use href="#i-dress"/></svg></div><div><p class="eyebrow" id="dress-title">Código de vestimenta</p><h2 data-bind="dressCode">Formal elegante</h2></div><p data-bind="dressNote">Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.</p></div>
     </section>
 
+    <section class="gifts-section section-wrap section-space" id="regalos" aria-labelledby="gifts-title">
+      <div class="section-heading reveal">
+        <svg class="gift-heading-icon icon" aria-hidden="true"><use href="#i-gift"/></svg>
+        <p class="eyebrow">Detalles llenos de cariño</p>
+        <h2 id="gifts-title" data-bind="gifts.title">Mesa de regalos</h2>
+        <p class="gifts-message" data-bind="gifts.message">Celebrar contigo es lo más importante. Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas de regalos.</p>
+      </div>
+      <div class="gift-grid">
+        <article class="gift-card reveal" aria-labelledby="amazon-title">
+          <p class="eyebrow">Nuestra lista en</p>
+          <h3 id="amazon-title" data-bind="gifts.amazon.name">Amazon</h3>
+          <p class="gift-status" id="amazon-gift-status">Próximamente</p>
+          <a class="button button-outline" id="amazon-gift" href="#regalos" aria-haspopup="dialog" aria-describedby="amazon-gift-status">Ver lista de regalos <svg class="icon small" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="gift-card reveal" aria-labelledby="target-title">
+          <p class="eyebrow">Nuestra lista en</p>
+          <h3 id="target-title" data-bind="gifts.target.name">Target</h3>
+          <p class="gift-status" id="target-gift-status">Próximamente</p>
+          <a class="button button-outline" id="target-gift" href="#regalos" aria-haspopup="dialog" aria-describedby="target-gift-status">Ver lista de regalos <svg class="icon small" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </section>
+
     <section class="rsvp-section" id="asistencia" aria-labelledby="rsvp-title">
       <img class="rsvp-branch" src="assets/images/olive-branch.svg" alt="" width="420" height="680" loading="lazy">
       <div class="rsvp-content section-wrap reveal"><p class="eyebrow">El detalle más especial es tu presencia</p><h2 class="text-lines" id="rsvp-title" data-bind="text.rsvpTitle">Nos hará muy felices<br>contar contigo.</h2><p data-bind="text.rsvpMessage">Gracias por ser parte de nuestra historia. Acompáñanos a escribir un nuevo recuerdo.</p><button class="button button-cream" type="button" id="rsvp-button"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="rsvp-deadline">Confirma antes del <time data-date="deadline" datetime="2026-11-14">14 de noviembre de 2026</time></p><p class="rsvp-pending" id="rsvp-pending">WhatsApp estará disponible próximamente.</p></div>
@@ -170,6 +195,7 @@
     </form>
   </dialog>
 
+  <dialog class="invitation-dialog info-dialog" id="gift-dialog" aria-labelledby="gift-dialog-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><div class="dialog-ornament" aria-hidden="true"><svg class="icon"><use href="#i-gift"/></svg></div><p class="eyebrow">Gracias por tu cariño</p><h2 id="gift-dialog-title">Nuestra lista de regalos</h2><p id="gift-dialog-message"></p><button class="button button-olive" type="button" data-close>Entendido <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button></dialog>
   <dialog class="invitation-dialog info-dialog" id="info-dialog" aria-labelledby="info-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><div class="dialog-ornament" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></div><p class="eyebrow">Estamos preparando cada detalle</p><h2 id="info-title">Muy pronto, la ubicación</h2><p id="info-message"></p><button class="button button-olive" type="button" data-close>Entendido <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button></dialog>
   <dialog class="invitation-dialog" id="share-dialog" aria-labelledby="share-title"><button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><p class="eyebrow">Comparte este día especial</p><h2 id="share-title">El amor se comparte.</h2><p>Envía la invitación a quienes celebrarán con nosotros.</p><label for="share-url">Enlace de la invitación</label><input id="share-url" readonly><button class="button button-olive" type="button" id="copy-link"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copiar enlace</button><a class="text-button" id="share-whatsapp" target="_blank" rel="noopener noreferrer">Compartir por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><p id="share-status" role="status"></p></dialog>
   <noscript><p class="noscript-note">Para ver la cuenta regresiva y preparar tu confirmación, activa JavaScript. Celebra con Gaby y Salvador el 28 de noviembre de 2026. Las ubicaciones se anunciarán próximamente.</p></noscript>

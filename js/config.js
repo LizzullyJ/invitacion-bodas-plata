@@ -40,6 +40,15 @@ const invitationConfig = {
   ],
   dressCode: "Formal elegante",
   dressNote: "Elige ese atuendo con el que te sientas especial. Será un placer celebrar contigo.",
+  gifts: {
+    title: "Mesa de regalos",
+    message: "Celebrar contigo es lo más importante. Si deseas tener un detalle con nosotros, aquí encontrarás nuestras listas de regalos.",
+    pendingMessage: "Estamos preparando nuestra lista de regalos en {store}. Muy pronto podrás consultarla aquí. ¡Gracias por tu cariño!",
+    // Pega el enlace de compartir de cada lista cuando esté lista.
+    // Vacío muestra un aviso de próxima disponibilidad, sin inventar una lista.
+    amazon: { name: "Amazon", url: "" },
+    target: { name: "Target", url: "" }
+  },
   rsvp: {
     // Escribe el número internacional, solo dígitos. Para México: 52 + 10 dígitos.
     // No uses un número ficticio. Vacío permite preparar y copiar el mensaje.

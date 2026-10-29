@@ -143,6 +143,20 @@ h1 em { font-weight: 400; }
 .dress-icons { display: flex; gap: 14px; color: #9d865f; }.dress-icons .icon { width: 38px; height: 56px; stroke-width: 1; }
 .dress-content .eyebrow { font-size: 8px; }.dress-content h2 { font-size: 38px; margin-top: 9px; }.dress-content > p { color: var(--muted); font-size: 11px; max-width: 285px; padding-left: 40px; border-left: 1px solid var(--gold-line); }
 .rsvp-section { background: var(--olive); color: var(--cream); position: relative; overflow: hidden; }
+.gift-heading-icon { display: block; width: 39px; height: 39px; color: #9f875c; stroke-width: 1; margin: 0 auto 20px; }
+.gifts-section .section-heading > .gifts-message { max-width: 485px; margin-inline: auto; font-size: 12px; line-height: 2; }
+.gift-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; max-width: 850px; margin-inline: auto; }
+.gift-card { padding: 32px 24px; text-align: center; border: 1px solid var(--gold-line); border-radius: 3px; background: #fffcf74f; }
+.gift-card .eyebrow { font-size: 8px; }
+.gift-card h3 { font-size: 43px; margin-top: 12px; }
+.gift-status { color: var(--muted); font-size: 10px; margin-top: 12px; }
+.gift-card .button { margin-top: 22px; min-width: 205px; }
+@media (max-width: 600px) {
+  .gift-grid { grid-template-columns: 1fr; gap: 20px; }
+  .gift-card { padding: 29px 22px; }
+  .gift-card h3 { font-size: 39px; }
+  .gifts-section .section-heading > .gifts-message { max-width: 300px; }
+}
 .rsvp-content { text-align: center; position: relative; padding-block: 88px 75px; z-index: 1; }
 .rsvp-content .eyebrow { color: #e1d2b4; font-size: 9px; }.rsvp-content h2 { font-size: clamp(43px, 5vw, 65px); margin-top: 22px; line-height: 1.05; }.rsvp-content > p:not([class]) { max-width: 390px; font-size: 11px; margin: 25px auto 30px; color: #f1e9dd; }
 .rsvp-content .button { min-width: 243px; }.rsvp-deadline { margin-top: 18px; font-size: 9px; color: #e9e1d3; }.rsvp-pending { margin-top: 10px; font-size: 8px; color: #e1d2b4; }
