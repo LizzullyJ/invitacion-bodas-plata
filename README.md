@@ -51,7 +51,7 @@ Abre `http://127.0.0.1:4173`. El servidor solo escucha en tu equipo. Finaliza co
 
 ### Fotografías
 
-La sección **Nuestro álbum** aparece después de Nuestra historia y antes de la fecha. Mientras `gallery.photos` esté vacío, muestra cuatro marcos decorativos y un aviso de próxima disponibilidad; no carga imágenes de ejemplo ni presenta fotos ficticias.
+La sección **Nuestro álbum** aparece después de Nuestra historia y antes de la fecha. Mientras `gallery.photos` esté vacío, muestra una composición decorativa de álbum con tres tarjetas y un aviso de próxima disponibilidad; no carga imágenes de ejemplo ni presenta fotos ficticias.
 
 Cuando tengas las fotografías:
 

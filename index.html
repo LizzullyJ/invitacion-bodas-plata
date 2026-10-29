@@ -155,31 +155,23 @@
       </div>
     </section>
 
-    <section class="gallery-section section-wrap" id="recuerdos" aria-labelledby="gallery-title">
-      <div class="section-heading reveal">
-        <h2 id="gallery-title" data-bind="gallery.title">Nuestro álbum</h2>
-        <p class="gallery-message" id="gallery-message" data-bind="gallery.pendingMessage">Pronto añadiremos nuestras fotos favoritas.</p>
-      </div>
-      <div class="gallery-grid reveal" id="gallery-grid" aria-hidden="true">
-        <div class="photo-card">
-          <div class="photo-placeholder"><span class="photo-mark"><svg class="icon">
-                <use href="#i-camera" />
-              </svg></span></div>
+    <section class="gallery-section" id="recuerdos" aria-labelledby="gallery-title">
+      <div class="gallery-layout section-wrap">
+        <div class="section-heading reveal">
+          <h2 id="gallery-title" data-bind="gallery.title">Nuestro álbum</h2>
+          <p class="gallery-message" id="gallery-message" data-bind="gallery.pendingMessage">Pronto añadiremos nuestras fotos favoritas.</p>
+          <img class="gallery-divider" src="assets/images/olive-divider.svg" alt="" width="160" height="32" loading="lazy">
         </div>
-        <div class="photo-card">
-          <div class="photo-placeholder"><span class="photo-mark"><svg class="icon">
-                <use href="#i-rings" />
-              </svg></span></div>
-        </div>
-        <div class="photo-card">
-          <div class="photo-placeholder"><span class="photo-mark"><svg class="icon">
-                <use href="#i-heart" />
-              </svg></span></div>
-        </div>
-        <div class="photo-card">
-          <div class="photo-placeholder"><span class="photo-mark"><svg class="icon">
-                <use href="#i-camera" />
-              </svg></span></div>
+        <div class="gallery-grid reveal" id="gallery-grid" aria-hidden="true">
+          <div class="photo-card album-side album-side-left"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-camera"/></svg></span></div></div>
+          <div class="photo-card album-cover">
+            <div class="photo-placeholder">
+              <span class="album-monogram" data-bind="couple.initials">S &amp; G</span>
+              <span class="album-cover-line"></span>
+              <svg class="album-cover-icon icon"><use href="#i-rings"/></svg>
+            </div>
+          </div>
+          <div class="photo-card album-side album-side-right"><div class="photo-placeholder"><span class="photo-mark"><svg class="icon"><use href="#i-heart"/></svg></span></div></div>
         </div>
       </div>
     </section>
