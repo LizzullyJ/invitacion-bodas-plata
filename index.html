@@ -115,12 +115,13 @@
       <a href="#itinerario">Itinerario</a>
       <a href="#regalos">Mesa de regalos</a>
     </nav>
-    <a class="header-rsvp" href="#asistencia">Confirmar asistencia <svg class="icon" aria-hidden="true">
-        <use href="#i-arrow" />
-      </svg></a>
   </header>
 
   <main id="contenido">
+    <figure class="opening-photo entrance">
+      <img src="assets/images/salvador-y-gabriela.jpg" alt="Los esposos abrazados frente a Union Station." width="852" height="1280" fetchpriority="high" decoding="async">
+    </figure>
+
     <section class="hero section-wrap" id="inicio" aria-labelledby="hero-title">
       <div class="hero-copy">
 
@@ -129,13 +130,17 @@
         <div class="hero-date entrance"><span></span><time data-date="hero" datetime="2026-11-28">28 · NOVIEMBRE ·
             2026</time><span></span></div>
         <p class="hero-quote entrance" data-bind="text.heroQuote">Después de 25 años, seguimos eligiéndonos.</p>
-        <a class="button button-olive hero-rsvp entrance" id="hero-rsvp" href="#asistencia">Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="hero-art hero-photo-art entrance" aria-label="25 años juntos">
-        <figure class="hero-photo">
-          <img src="assets/images/salvador-y-gabriela.jpg" alt="Los esposos abrazados frente a Union Station." width="852" height="1280" fetchpriority="high" decoding="async">
-        </figure>
-        <div class="photo-anniversary" aria-hidden="true"><span data-bind="couple.anniversaryYears">25</span><span>AÑOS</span></div>
+      <div class="hero-art anniversary-keepsake entrance" aria-label="25 años juntos">
+        <div class="arch-frame" aria-hidden="true"><div class="arch-inner"></div></div>
+        <div class="anniversary-composition">
+          <svg class="rings" aria-hidden="true"><use href="#i-rings"/></svg>
+          <div class="anniversary-number" data-bind="couple.anniversaryYears">25</div>
+          <div class="anniversary-label">AÑOS<span>juntos</span></div>
+          <div class="anniversary-years" data-years>2001 — 2026</div>
+        </div>
+        <img class="hero-branch branch-right" src="assets/images/olive-branch.svg" alt="" width="420" height="680">
+        <img class="hero-branch branch-left" src="assets/images/olive-branch.svg" alt="" width="420" height="680">
       </div>
     </section>
 
