@@ -75,7 +75,7 @@ const invitationConfig = {
   },
   text: {
     eyebrow: "Celebrando 25 años de amor",
-    heroQuote: "Hay historias de amor que merecen celebrarse para siempre.",
+    heroQuote: "Después de 25 años, seguimos eligiéndonos.",
     storyEyebrow: "Nuestra historia continúa",
     storyTitle: "Un sí. Miles de recuerdos.\nToda una vida juntos.",
     storyMessage: "Veinticinco años de momentos compartidos, sueños cumplidos y un amor que ha crecido con el tiempo. Hoy queremos celebrar esta hermosa historia rodeados de las personas que forman parte de nuestras vidas.",
