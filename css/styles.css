@@ -494,37 +494,53 @@ h1 em { font-weight: 400; }
   .gallery-section .gallery-grid.has-photos .photo-card { padding: 7px; margin-bottom: 12px; }
   .gallery-section .gallery-grid.has-photos figcaption { padding: 10px 3px 3px; font-size: 18px; }
 }
-/* Carrusel del álbum: fotos completas, navegación y reproducción opcional. */
-.gallery-section .gallery-grid.has-photos { display: block; max-width: 620px; column-count: auto; }
-.gallery-section .gallery-grid.has-single-photo { max-width: 520px; }
-.album-viewport { overflow: hidden; width: 100%; padding: 1px; border-radius: 3px; touch-action: pan-y pinch-zoom; }
+/* Carrusel del álbum: fotografía protagonista y navegación con miniaturas. */
+.gallery-section .gallery-layout { grid-template-columns: minmax(0, 1fr); gap: 34px; padding-block: 60px; }
+.gallery-section .section-heading { max-width: 600px; margin-inline: auto; text-align: center; }
+.gallery-section .section-heading h2 { max-width: none; font-size: clamp(42px, 4.5vw, 60px); }
+.gallery-section .section-heading .gallery-message { max-width: 420px; margin: 16px auto 0; }
+.gallery-section .gallery-divider { margin: 20px auto 0; width: 140px; }
+.gallery-section .gallery-grid:not(.has-photos) { justify-self: center; }
+.gallery-section .gallery-grid.has-photos { display: block; width: 100%; max-width: 940px; column-count: auto; justify-self: center; margin-inline: auto; }
+.gallery-section .gallery-grid.has-single-photo { max-width: 620px; }
+.album-viewport { overflow: hidden; width: 100%; padding: 9px; border: 1px solid #b49b6870; border-radius: 5px; background: var(--cream); box-shadow: 0 18px 48px #59463712, 0 3px 9px #59463705; touch-action: pan-y pinch-zoom; }
 .album-viewport:focus-visible { outline: 2px solid var(--olive); outline-offset: 5px; }
-.album-track { display: flex; align-items: stretch; width: 100%; transition: transform .65s cubic-bezier(.22,.68,.24,1); }
-.gallery-section .gallery-grid.has-photos .album-slide { display: flex; flex: 0 0 100%; flex-direction: column; width: 100%; min-width: 0; max-width: none; margin: 0; padding: 10px; transform: none; border-color: #b49b6880; box-shadow: none; }
-.album-photo { display: grid; place-items: center; width: 100%; height: clamp(260px, 36vw, 430px); background: #eee8dd; }
+.album-track { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
+.gallery-section .gallery-grid.has-photos .album-slide { display: flex; grid-area: 1 / 1; flex-direction: column; width: 100%; min-width: 0; max-width: none; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .7s ease, visibility .7s; }
+.gallery-section .gallery-grid.has-photos .album-slide.is-active { opacity: 1; visibility: visible; z-index: 1; pointer-events: auto; }
+.album-slide::before { content: none; }
+.album-photo { display: grid; place-items: center; width: 100%; height: clamp(360px, 49vw, 600px); background: #eee8dd; border-radius: 2px; overflow: hidden; }
 .album-photo img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; }
 .gallery-section .album-photo .photo-unavailable { width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; }
-.gallery-section .gallery-grid.has-photos figcaption { padding: 14px 6px 4px; font-size: 22px; line-height: 1.35; }
-.album-controls { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-top: 15px; }
-.album-paging { display: flex; align-items: center; gap: 10px; }
-.album-arrow { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #89927a66; border-radius: 50%; background: #fffcf77a; color: var(--olive); transition: background .2s, border-color .2s; }
+.gallery-section .gallery-grid.has-photos figcaption { padding: 16px 8px 7px; font-size: 23px; line-height: 1.35; }
+.album-controls { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; padding-top: 22px; }
+.album-paging { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: 20px; width: min(230px, 100%); }
+.album-arrow { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #89927a70; border-radius: 50%; background: #fffcf7b3; color: var(--olive); transition: background .2s, border-color .2s, transform .2s; }
 .album-arrow .icon { width: 21px; height: 21px; }
 .album-previous .icon { transform: rotate(180deg); }
-.album-arrow:hover { border-color: var(--olive); background: var(--cream); }
-.album-counter { min-width: 51px; font-size: 10px; font-weight: 500; letter-spacing: .1em; text-align: center; color: var(--olive); font-variant-numeric: tabular-nums; }
-.album-playback { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 3px; background: none; border: 0; font-size: 11px; color: var(--olive); }
-.album-playback .icon { width: 15px; height: 15px; }
-.album-dots { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; gap: 0 2px; }
-.album-dot { display: grid; place-items: center; width: 28px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: none; }
-.album-dot::before { content: ""; width: 6px; height: 6px; border: 1px solid var(--olive); border-radius: 50%; opacity: .45; transition: width .25s, background .25s, opacity .25s; }
-.album-dot[aria-current]::before { width: 20px; border-radius: 8px; background: var(--olive); opacity: 1; }
+.album-arrow:hover { border-color: var(--olive); background: var(--cream); transform: translateY(-2px); }
+.album-counter { font-family: var(--serif); font-size: 20px; line-height: 1; letter-spacing: .08em; text-align: center; color: var(--olive); font-variant-numeric: tabular-nums; }
+.album-dots { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; max-width: 460px; gap: 10px; }
+.album-dot { position: relative; display: grid; place-items: center; flex: 0 0 72px; width: 72px; height: 52px; padding: 3px; border: 1px solid transparent; border-radius: 3px; background: #fffcf780; overflow: hidden; opacity: .55; transition: opacity .25s, border-color .25s, box-shadow .25s; }
+.album-dot::before { content: none; }
+.album-dot img { width: 100%; height: 100%; min-width: 0; min-height: 0; max-height: 100%; object-fit: cover; border-radius: 1px; }
+.album-dot span { font-family: var(--serif); font-size: 20px; color: var(--olive); }
+.album-dot:hover { opacity: .9; }
+.album-dot[aria-current] { border-color: var(--olive); box-shadow: 0 2px 8px #58644f12; opacity: 1; }
 .album-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 600px) {
-  .gallery-section .gallery-grid.has-photos .album-slide { padding: 7px; margin-bottom: 0; }
-  .album-photo { height: clamp(250px, 88vw, 420px); }
-  .gallery-section .gallery-grid.has-photos figcaption { padding: 12px 4px 4px; font-size: 20px; }
-  .album-controls { gap: 6px 12px; padding-top: 12px; }
-  .album-paging { gap: 6px; }
+  .gallery-section .gallery-layout { gap: 28px; padding-block: 42px; }
+  .gallery-section .section-heading h2 { font-size: clamp(38px, 10.8vw, 46px); }
+  .gallery-section .section-heading .gallery-message { max-width: 290px; }
+  .gallery-section .gallery-divider { width: 120px; margin-top: 17px; }
+  .album-viewport { padding: 6px; }
+  .gallery-section .gallery-grid.has-photos .album-slide { padding: 0; margin-bottom: 0; }
+  .album-photo { height: clamp(250px, 78vw, 390px); }
+  .gallery-section .gallery-grid.has-photos figcaption { padding: 13px 5px 5px; font-size: 20px; }
+  .album-controls { gap: 16px; padding-top: 18px; }
+  .album-paging { gap: 16px; width: min(210px, 100%); }
+  .album-dots { gap: 6px; }
+  .album-dot { flex-basis: calc((100% - 24px) / 5); width: calc((100% - 24px) / 5); max-width: 64px; height: 44px; padding: 2px; }
 }
 /* Detalles de papelería y símbolos con mayor presencia. */
 .icon { stroke-width: 1.7; }

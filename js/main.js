@@ -17,7 +17,7 @@
   }
 
   function makeIcon(name) {
-    const allowed = ["church", "sparkles", "utensils", "glasses", "music", "heart", "camera", "arrow", "pause", "play"];
+    const allowed = ["church", "sparkles", "utensils", "glasses", "music", "heart", "camera", "arrow"];
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("class", "icon");
     svg.setAttribute("aria-hidden", "true");
@@ -248,6 +248,7 @@
   function initAlbumCarousel(grid, viewport, track, photos) {
     grid.setAttribute("aria-roledescription", "carrusel");
     viewport.tabIndex = 0;
+    viewport.setAttribute("role", "group");
     viewport.setAttribute("aria-label", "Fotografías. Usa las flechas del teclado para cambiar de foto.");
     const controls = document.createElement("div");
     controls.className = "album-controls";
@@ -259,7 +260,7 @@
       node.className = className;
       node.setAttribute("aria-label", label);
       node.setAttribute("aria-controls", "gallery-viewport");
-      node.append(makeIcon(icon));
+      if (icon) node.append(makeIcon(icon));
       return node;
     };
     const previous = button("Foto anterior", "album-arrow album-previous", "arrow");
@@ -268,15 +269,26 @@
     counter.className = "album-counter";
     counter.setAttribute("aria-hidden", "true");
     paging.append(previous, counter, next);
-    const playback = button("Pausar cambio automático de fotos", "album-playback", "pause");
     const dots = document.createElement("div");
     dots.className = "album-dots";
     dots.setAttribute("role", "group");
     dots.setAttribute("aria-label", "Elegir fotografía");
     photos.forEach((photo, index) => {
-      const dot = button("Ver foto " + (index + 1), "album-dot", "heart");
-      dot.replaceChildren();
+      const dot = button("Ver foto " + (index + 1), "album-dot");
       dot.setAttribute("aria-controls", "gallery-photo-" + (index + 1));
+      const thumbnail = document.createElement("img");
+      thumbnail.src = photo.safeSource;
+      thumbnail.alt = "";
+      thumbnail.width = 120;
+      thumbnail.height = 80;
+      thumbnail.loading = "lazy";
+      thumbnail.decoding = "async";
+      const fallback = document.createElement("span");
+      fallback.textContent = pad(index + 1);
+      fallback.setAttribute("aria-hidden", "true");
+      fallback.hidden = true;
+      thumbnail.addEventListener("error", () => { thumbnail.hidden = true; fallback.hidden = false; }, { once: true });
+      dot.append(thumbnail, fallback);
       dot.addEventListener("click", () => show(index, true));
       dots.append(dot);
     });
@@ -284,36 +296,28 @@
     status.className = "album-status";
     status.setAttribute("role", "status");
     status.setAttribute("aria-atomic", "true");
-    controls.append(paging, playback, dots, status);
+    controls.append(paging, dots, status);
     grid.append(controls);
 
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     const interval = Number(config.gallery.intervalMs);
     const delay = Number.isFinite(interval) ? Math.min(60000, Math.max(3000, interval)) : 5000;
     let index = 0;
-    let paused = motion.matches;
     let hovering = false;
+    let keyboardFocus = false;
     let visible = !("IntersectionObserver" in window);
     let timer;
     let touch;
 
     function schedule() {
       clearTimeout(timer);
-      if (!paused && !hovering && visible && !document.hidden) {
+      if (!motion.matches && !hovering && !keyboardFocus && visible && !document.hidden) {
         timer = setTimeout(() => show(index + 1), delay);
       }
     }
 
-    function updatePlayback() {
-      const label = document.createElement("span");
-      label.textContent = paused ? "Reproducir" : "Pausar";
-      playback.replaceChildren(makeIcon(paused ? "play" : "pause"), label);
-      playback.setAttribute("aria-label", paused ? "Iniciar cambio automático de fotos" : "Pausar cambio automático de fotos");
-    }
-
     function show(position, manual = false) {
       index = (position + photos.length) % photos.length;
-      track.style.transform = "translateX(-" + (index * 100) + "%)";
       [...track.children].forEach((slide, current) => {
         slide.classList.toggle("is-active", current === index);
         slide.setAttribute("aria-hidden", String(current !== index));
@@ -327,33 +331,30 @@
         else dot.removeAttribute("aria-current");
       });
       counter.textContent = pad(index + 1) + " / " + pad(photos.length);
-      if (manual) {
-        paused = true;
-        status.textContent = "Foto " + (index + 1) + " de " + photos.length + (photos[index].caption ? ": " + photos[index].caption : ".");
-        updatePlayback();
-      }
+      if (manual) status.textContent = "Foto " + (index + 1) + " de " + photos.length + (photos[index].caption ? ": " + photos[index].caption : ".");
       schedule();
     }
 
     previous.addEventListener("click", () => show(index - 1, true));
     next.addEventListener("click", () => show(index + 1, true));
-    playback.addEventListener("click", () => {
-      paused = !paused;
-      updatePlayback();
-      schedule();
-    });
     grid.addEventListener("keydown", (event) => {
+      keyboardFocus = true;
+      schedule();
       const positions = { ArrowLeft: index - 1, ArrowRight: index + 1, Home: 0, End: photos.length - 1 };
       if (!(event.key in positions)) return;
       event.preventDefault();
       show(positions[event.key], true);
     });
     grid.addEventListener("focusin", (event) => {
-      if (grid.contains(event.relatedTarget)) return;
-      paused = true;
-      updatePlayback();
+      keyboardFocus = event.target.matches(":focus-visible");
       schedule();
     });
+    grid.addEventListener("focusout", (event) => {
+      if (grid.contains(event.relatedTarget)) return;
+      keyboardFocus = false;
+      schedule();
+    });
+    grid.addEventListener("pointerdown", () => { keyboardFocus = false; schedule(); });
     grid.addEventListener("pointerenter", (event) => {
       if (event.pointerType === "touch") return;
       hovering = true;
@@ -374,15 +375,11 @@
     });
     viewport.addEventListener("pointercancel", () => { touch = null; });
     document.addEventListener("visibilitychange", schedule);
-    motion.addEventListener("change", () => {
-      if (motion.matches) { paused = true; updatePlayback(); }
-      schedule();
-    });
+    motion.addEventListener("change", schedule);
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }, { threshold: .2 });
       observer.observe(grid);
     }
-    updatePlayback();
     show(0);
   }
 

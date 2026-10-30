@@ -67,7 +67,7 @@ photos: [
 
 Los nombres anteriores son ejemplos: los archivos deben existir antes de añadirlos. La galería reemplaza los marcos vacíos automáticamente al configurar imágenes válidas. Admite fotos locales dentro de `assets/images/` y URLs HTTPS sin credenciales. Si una foto no carga, muestra un aviso en su marco en lugar del icono de imagen rota. Las fotos se cargan al acercarse a la sección y las descripciones no se insertan como HTML.
 
-Con dos o más fotos, el álbum se convierte en un carrusel: cambia automáticamente cada cinco segundos e incluye flechas, indicadores, navegación por teclado y deslizamiento táctil. El botón Pausar/Reproducir permite controlar el cambio automático. Al navegar manualmente o entrar con el teclado se pausa hasta pulsar Reproducir; también se detiene temporalmente al colocar el cursor encima, salir de la sección o cambiar de pestaña. Si el dispositivo prefiere movimiento reducido, inicia pausado. Con una sola foto se ocultan los controles. Las fotos se muestran completas, sin recortes.
+Con dos o más fotos, el álbum se convierte en un carrusel: cambia automáticamente cada cinco segundos e incluye flechas, miniaturas para elegir una imagen, navegación por teclado y deslizamiento táctil. Las fotos se muestran completas con una transición suave. El cambio automático se detiene temporalmente al colocar el cursor encima, navegar con el teclado, salir de la sección o cambiar de pestaña; se reanuda al terminar la interacción. Al cambiar de foto manualmente, el intervalo vuelve a empezar. Si el dispositivo prefiere movimiento reducido, la navegación es manual. Con una sola foto se ocultan los controles.
 
 Puedes ajustar el intervalo en `gallery.intervalMs` (entre 3000 y 60000 milisegundos).
 
