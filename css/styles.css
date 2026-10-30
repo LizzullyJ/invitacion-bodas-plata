@@ -423,7 +423,7 @@ h1 em { font-weight: 400; }
 .photo-hero { position: relative; isolation: isolate; width: 100%; overflow: hidden; }
 .opening-photo { width: 100%; max-width: none; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
 .opening-photo::before, .opening-photo::after { content: none; }
-.opening-photo img { display: block; width: 100%; max-width: none; height: auto; aspect-ratio: 213 / 320; object-fit: contain; }
+.opening-photo img { display: block; width: 100%; max-width: none; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
 .photo-hero::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, #102019ad 0, #10201945 110px, #10201900 260px), linear-gradient(0deg, #1020198c 0%, #10201900 13%); pointer-events: none; }
 .photo-hero .photo-rsvp { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(12px, 2vw, 28px); display: flex; align-items: center; justify-content: center; width: max-content; max-width: calc(100% - 48px); min-height: 44px; margin-inline: auto; padding: 6px 2px; gap: 9px; font-size: 12px; font-weight: 500; line-height: 1.5; letter-spacing: .02em; color: var(--cream); background: transparent; border: 0; box-shadow: none; text-decoration: underline; text-decoration-color: #fffcf780; text-underline-offset: 6px; text-shadow: 0 1px 8px #102019b3; }
 .photo-hero .photo-rsvp .icon { width: 17px; height: 17px; }

@@ -47,7 +47,13 @@ const invitationConfig = {
     intervalMs: 5000,
     // Cuando tengas las fotos, cópialas a assets/images/ y agrega sus datos.
     // Ejemplo: { src: "assets/images/boda.jpg", alt: "Nuestra boda", caption: "El comienzo" }
-    photos: []
+    photos: [
+      {"src":"assets/images/1.jpg","alt":"Detalle de las manos y los anillos de Salvador y Gabriela."},
+      {"src":"assets/images/2.jpg","alt":"Salvador y Gabriela junto a una camioneta azul clásica."},
+      {"src":"assets/images/3.jpg","alt":"Salvador abrazando a Gabriela frente a una fachada de piedra."},
+      {"src":"assets/images/4.jpg","alt":"Salvador y Gabriela sonriendo en un puente con candados."},
+      {"src":"assets/images/5.jpg","alt":"Retrato de Salvador y Gabriela abrazados."}
+    ]
   },
   dressCode: "Código de vestimenta",
   dressNote: "Elige ese atuendo con el que te sientas especial. Te pedimos amablemente evitar las lentejuelas.",
