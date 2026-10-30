@@ -43,6 +43,8 @@ const invitationConfig = {
     title: "Nuestro álbum",
     message: "Algunos de nuestros momentos favoritos.",
     pendingMessage: "Pronto añadiremos nuestras fotos favoritas.",
+    // Tiempo entre fotos en milisegundos (5000 = cinco segundos).
+    intervalMs: 5000,
     // Cuando tengas las fotos, cópialas a assets/images/ y agrega sus datos.
     // Ejemplo: { src: "assets/images/boda.jpg", alt: "Nuestra boda", caption: "El comienzo" }
     photos: []

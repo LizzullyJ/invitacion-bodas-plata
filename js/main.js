@@ -17,7 +17,7 @@
   }
 
   function makeIcon(name) {
-    const allowed = ["church", "sparkles", "utensils", "glasses", "music", "heart", "camera"];
+    const allowed = ["church", "sparkles", "utensils", "glasses", "music", "heart", "camera", "arrow", "pause", "play"];
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("class", "icon");
     svg.setAttribute("aria-hidden", "true");
@@ -193,10 +193,23 @@
       .map((photo) => ({ ...photo, safeSource: safeGallerySource(photo?.src) }))
       .filter((photo) => photo.safeSource);
     if (!photos.length) return;
-    const fragment = document.createDocumentFragment();
-    for (const photo of photos) {
+
+    const viewport = document.createElement("div");
+    viewport.className = "album-viewport";
+    viewport.id = "gallery-viewport";
+    const track = document.createElement("div");
+    track.className = "album-track";
+    photos.forEach((photo, index) => {
       const card = document.createElement("figure");
-      card.className = "photo-card";
+      card.className = "photo-card album-slide";
+      card.id = "gallery-photo-" + (index + 1);
+      card.setAttribute("role", "group");
+      card.setAttribute("aria-roledescription", "diapositiva");
+      card.setAttribute("aria-label", (index + 1) + " de " + photos.length);
+      card.setAttribute("aria-hidden", String(index !== 0));
+      card.classList.toggle("is-active", index === 0);
+      const frame = document.createElement("div");
+      frame.className = "album-photo";
       const img = document.createElement("img");
       img.src = photo.safeSource;
       img.alt = String(photo.alt || photo.caption || ("Fotografía de " + couple));
@@ -212,20 +225,165 @@
         unavailable.append(makeIcon("camera"), message);
         img.replaceWith(unavailable);
       }, { once: true });
-      card.append(img);
+      frame.append(img);
+      card.append(frame);
       if (photo.caption) {
         const caption = document.createElement("figcaption");
         caption.textContent = String(photo.caption);
         card.append(caption);
       }
-      fragment.append(card);
-    }
-    grid.replaceChildren(fragment);
+      track.append(card);
+    });
+    viewport.append(track);
+    grid.replaceChildren(viewport);
     grid.removeAttribute("aria-hidden");
+    grid.setAttribute("role", "group");
+    grid.setAttribute("aria-labelledby", "gallery-title");
     grid.classList.add("has-photos");
     grid.classList.toggle("has-single-photo", photos.length === 1);
-    grid.style.setProperty("--photo-columns", String(Math.min(4, photos.length)));
     $("#gallery-message").textContent = config.gallery.message;
+    if (photos.length > 1) initAlbumCarousel(grid, viewport, track, photos);
+  }
+
+  function initAlbumCarousel(grid, viewport, track, photos) {
+    grid.setAttribute("aria-roledescription", "carrusel");
+    viewport.tabIndex = 0;
+    viewport.setAttribute("aria-label", "Fotografías. Usa las flechas del teclado para cambiar de foto.");
+    const controls = document.createElement("div");
+    controls.className = "album-controls";
+    const paging = document.createElement("div");
+    paging.className = "album-paging";
+    const button = (label, className, icon) => {
+      const node = document.createElement("button");
+      node.type = "button";
+      node.className = className;
+      node.setAttribute("aria-label", label);
+      node.setAttribute("aria-controls", "gallery-viewport");
+      node.append(makeIcon(icon));
+      return node;
+    };
+    const previous = button("Foto anterior", "album-arrow album-previous", "arrow");
+    const next = button("Siguiente foto", "album-arrow album-next", "arrow");
+    const counter = document.createElement("span");
+    counter.className = "album-counter";
+    counter.setAttribute("aria-hidden", "true");
+    paging.append(previous, counter, next);
+    const playback = button("Pausar cambio automático de fotos", "album-playback", "pause");
+    const dots = document.createElement("div");
+    dots.className = "album-dots";
+    dots.setAttribute("role", "group");
+    dots.setAttribute("aria-label", "Elegir fotografía");
+    photos.forEach((photo, index) => {
+      const dot = button("Ver foto " + (index + 1), "album-dot", "heart");
+      dot.replaceChildren();
+      dot.setAttribute("aria-controls", "gallery-photo-" + (index + 1));
+      dot.addEventListener("click", () => show(index, true));
+      dots.append(dot);
+    });
+    const status = document.createElement("span");
+    status.className = "album-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-atomic", "true");
+    controls.append(paging, playback, dots, status);
+    grid.append(controls);
+
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const interval = Number(config.gallery.intervalMs);
+    const delay = Number.isFinite(interval) ? Math.min(60000, Math.max(3000, interval)) : 5000;
+    let index = 0;
+    let paused = motion.matches;
+    let hovering = false;
+    let visible = !("IntersectionObserver" in window);
+    let timer;
+    let touch;
+
+    function schedule() {
+      clearTimeout(timer);
+      if (!paused && !hovering && visible && !document.hidden) {
+        timer = setTimeout(() => show(index + 1), delay);
+      }
+    }
+
+    function updatePlayback() {
+      const label = document.createElement("span");
+      label.textContent = paused ? "Reproducir" : "Pausar";
+      playback.replaceChildren(makeIcon(paused ? "play" : "pause"), label);
+      playback.setAttribute("aria-label", paused ? "Iniciar cambio automático de fotos" : "Pausar cambio automático de fotos");
+    }
+
+    function show(position, manual = false) {
+      index = (position + photos.length) % photos.length;
+      track.style.transform = "translateX(-" + (index * 100) + "%)";
+      [...track.children].forEach((slide, current) => {
+        slide.classList.toggle("is-active", current === index);
+        slide.setAttribute("aria-hidden", String(current !== index));
+        if (current === index) {
+          const img = slide.querySelector("img");
+          if (img) img.loading = "eager";
+        }
+      });
+      [...dots.children].forEach((dot, current) => {
+        if (current === index) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+      counter.textContent = pad(index + 1) + " / " + pad(photos.length);
+      if (manual) {
+        paused = true;
+        status.textContent = "Foto " + (index + 1) + " de " + photos.length + (photos[index].caption ? ": " + photos[index].caption : ".");
+        updatePlayback();
+      }
+      schedule();
+    }
+
+    previous.addEventListener("click", () => show(index - 1, true));
+    next.addEventListener("click", () => show(index + 1, true));
+    playback.addEventListener("click", () => {
+      paused = !paused;
+      updatePlayback();
+      schedule();
+    });
+    grid.addEventListener("keydown", (event) => {
+      const positions = { ArrowLeft: index - 1, ArrowRight: index + 1, Home: 0, End: photos.length - 1 };
+      if (!(event.key in positions)) return;
+      event.preventDefault();
+      show(positions[event.key], true);
+    });
+    grid.addEventListener("focusin", (event) => {
+      if (grid.contains(event.relatedTarget)) return;
+      paused = true;
+      updatePlayback();
+      schedule();
+    });
+    grid.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") return;
+      hovering = true;
+      schedule();
+    });
+    grid.addEventListener("pointerleave", () => { hovering = false; schedule(); });
+    viewport.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
+      touch = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      viewport.setPointerCapture(event.pointerId);
+    });
+    viewport.addEventListener("pointerup", (event) => {
+      if (!touch || touch.id !== event.pointerId) return;
+      const dx = event.clientX - touch.x;
+      const dy = event.clientY - touch.y;
+      touch = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) show(index + (dx < 0 ? 1 : -1), true);
+    });
+    viewport.addEventListener("pointercancel", () => { touch = null; });
+    document.addEventListener("visibilitychange", schedule);
+    motion.addEventListener("change", () => {
+      if (motion.matches) { paused = true; updatePlayback(); }
+      schedule();
+    });
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }, { threshold: .2 });
+      observer.observe(grid);
+    }
+    updatePlayback();
+    show(0);
   }
 
   function renderTimeline() {
