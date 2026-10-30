@@ -134,6 +134,7 @@
     $(".hero-art").setAttribute("aria-label", `${config.couple.anniversaryYears} años juntos`);
     document.title = `${config.couple.name1} & ${config.couple.name2} · Bodas de Plata`;
     $('meta[property="og:title"]').content = document.title;
+    $('meta[name="twitter:title"]').content = document.title;
     if (eventStart) {
       const year = Number(datePart(eventStart, { year: "numeric" }));
       const dateCard = $("#event-date");
@@ -150,7 +151,9 @@
       }
       const description = `${couple} te invitan a celebrar ${config.couple.anniversaryYears} años de amor el ${fullDate(eventStart)}. ${config.event.title}.`;
       $('meta[name="description"]').content = description;
-      $('meta[property="og:description"]').content = description;
+      const shareDescription = fullDate(eventStart) + " · Acompáñanos a celebrar " + config.couple.anniversaryYears + " años de amor.";
+      $('meta[property="og:description"]').content = shareDescription;
+      $('meta[name="twitter:description"]').content = shareDescription;
     } else {
       $$('[data-date]').filter((node) => node.dataset.date !== "deadline").forEach((node) => { node.textContent = "Fecha por confirmar"; node.removeAttribute("datetime"); });
       $("#calendar-button").hidden = true;

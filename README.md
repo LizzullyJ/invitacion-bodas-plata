@@ -162,3 +162,9 @@ scripts/serve.mjs
 scripts/build.mjs
 README.md
 ```
+
+## Vista previa al compartir
+
+El enlace público es https://lizzullyj.github.io/invitacion-bodas-plata/. La vista previa utiliza la foto 1, copiada sin modificar en `assets/images/vista-previa-foto-1.jpg`, el título «Salvador & Gabriela · Bodas de Plata» y la fecha de la celebración. Open Graph y Twitter Card están declarados directamente en el HTML para que funcionen sin ejecutar JavaScript; las rutas de la imagen y la URL canónica son absolutas.
+
+Para cambiar la imagen, actualiza ese archivo y los datos `og:image` / `twitter:image` de `index.html`; ajusta también las dimensiones y el texto alternativo si corresponde. Después, vuelve a publicar. Las aplicaciones que ya hayan leído el enlace pueden conservar una vista previa anterior en caché. El enlace privado de Sites requiere iniciar sesión y no sustituye al enlace público para compartir con invitados.
